@@ -1,0 +1,198 @@
+/* animation styels */
+.animated {
+	-webkit-transition: all .4s ease;
+	-moz-transition: all .4s ease;
+	-ms-transition: all .4s ease;
+	-o-transition: all .4s ease;
+	transition: all .4s ease;
+}
+
+/* universal styels */
+h1, h2, h3 {
+}
+a {
+	cursor: pointer;
+}
+svg:not(:root) {
+	top: 0 !important;
+	left: 0 !important;
+}
+body {
+	
+}
+.hide, input.hide {
+	display: none;
+} 
+.header-img {
+	float: left;
+	margin: 0 20px;
+}
+.padd {
+	margin-right: 20px;
+}
+.ember-view  .container .sixteen.columns{
+	width: 100%;
+}
+.section {
+	margin: 30px 0;
+}
+.thumbnail {
+	max-width: 12.3%;
+	border: solid 1px #000;
+}
+.thumbnail:hover {
+	opacity: 0.6;
+}
+.app-gif {
+	border: solid 1px #aaa;
+}
+.wrapper {
+	background-color: #fff;
+}
+.footer-wrapper {
+	width: 100%;
+	background-image: url('../images/footer_bg.jpg');
+	background-repeat: repeat-x;
+	position: relative;
+}
+.content {
+	padding-top: 20px;
+	position: relative;
+	padding-bottom: 30px;
+}
+#canvas {
+	position: fixed;
+	top: -50px;
+	right: 0;}
+.loading {
+	text-align: center;
+}
+.lightbox {
+	background-image: url('../images/trans_50perc.png');
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+	top: 0;
+}
+.lightbox .image-container {
+	margin: 200px auto 0 auto;
+	width: 100%;
+	text-align: center;
+}
+.lightbox .image-container img{
+	-webkit-box-shadow: 0 0 4px 0 rgba(0,0,0,100);
+	box-shadow: 0 0 4px 0 rgba(0,0,0,100);
+	-webkit-border-radius: 6px 6px 6px 6px;
+	border-radius: 6px 6px 6px 6px;
+	background-image: url('../images/trans_light_50perc.png');
+}
+
+.lightbox .close-bttn {
+	position: absolute;
+	top: 20px;
+	color: #fff;
+	right: 20px;
+	font-size: 40px;
+}
+.lightbox .close-bttn:hover {
+	color: #ccc;
+}
+.seperator {
+	margin: 20px 0 0 0;
+	height: 20px;
+	padding-bottom: 20px;
+	border-top: solid 1px #ccc;
+	display: block;
+	clear: both;
+}
+.dota-heroes {
+	margin-bottom: 20px;
+}
+.nav-container {
+	width: 100%;
+	height: 50px;
+	margin-bottom: 20px;
+	position: relative;
+}
+.nav.squished {
+	height: 0;
+	overflow: hidden;
+	margin: 0;
+}
+.navbar {
+	position: fixed;
+	top: -52px;
+	width: 100%;
+	z-index: 1;
+}
+.navbar.sticky {
+	position: fixed;
+	top: 0;
+}
+ul.nav {
+	height: 50px;
+	background-color: #000;
+	width: 100%;
+}
+
+ul.nav li {
+	float: left;
+	line-height: 50px;
+	color: #fff;
+	padding: 0 20px;
+}
+ul.nav li a {
+	color: #fff;
+	text-decoration: none;
+}
+div.showcase-image {
+	width: 23%;
+	margin-right: 1.25%;
+	max-width: 300px;
+	float: left;
+}
+div.showcase-image:last-child {
+	margin-right: 0;
+}
+.showcase-image img {
+	max-width: 100%;
+}
+
+.dota-hero-image-thumb {
+	background-image: url('../images/dota_heroes_full.jpg');
+	width: 128px;
+	height: 72px;
+	color: #fff;
+	float: left;
+}
+.diablo-kills, .diablo-elite-kills {
+	height: 64px;
+	line-height: 64px;
+	display: block;
+	background-repeat: no-repeat;
+	float: left;
+}
+.diablo-kills {
+	background-image: url('../images/swords_icon.png');
+	padding-left: 45px;
+}
+.diablo-elite-kills {
+	background-image: url('../images/elite_icon.png');
+	padding-left: 55px;
+}
+
+.g-person {
+	-webkit-box-shadow: 0 0 4px 0 rgba(0,0,0,100);
+	box-shadow: 0 0 4px 0 rgba(0,0,0,100);
+	-webkit-border-radius: 6px 6px 6px 6px;
+	border-radius: 6px 6px 6px 6px;
+}
+
+.footer {
+	height: 300px;
+	padding: 20px;
+	position: relative;
+	max-width: 960px;
+	margin: 0 auto;
+}

@@ -1,0 +1,6 @@
+<div class="sixteen columns">
+{{#each model.recipes}}
+  {{#link-to "recipe" this}}{{name}}{{/link-to}}
+{{/each}}
+{{outlet}}
+</div>

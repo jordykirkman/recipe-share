@@ -1,0 +1,15 @@
+<div class="four columns">
+Hi {{model.username}}
+<ul>
+<li>Books</li>
+{{#each model.books}}
+  <li>{{#link-to "book" this}}{{name}}{{/link-to}}</li>
+{{/each}}
+</ul>
+<ul>
+<li>{{#link-to "user.newbook"}}New Book{{/link-to}}</li>
+</ul>
+</div>
+<div class="twelve columns">
+{{outlet}}
+</div>
