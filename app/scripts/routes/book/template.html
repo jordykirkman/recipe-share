@@ -1,6 +1,9 @@
 <div class="sixteen columns">
+<ul>
+<li>{{#link-to "book.newrecipe"}}New Recipe{{/link-to}}</li>
 {{#each model.recipes}}
-  {{#link-to "recipe" this}}{{name}}{{/link-to}}
+  <li>{{#link-to "recipe" this}}{{name}}{{/link-to}}</li>
 {{/each}}
+<ul>
 {{outlet}}
 </div>

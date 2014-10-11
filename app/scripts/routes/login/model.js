@@ -16,13 +16,6 @@ function() {
 		books: DS.hasMany('book', { async: true })
 	});
 
-
-	App.Book = DS.Model.extend({
-		name: DS.attr('string'),
-
-		recipes: DS.hasMany('recipe', { async: true })
-	});
-
 	App.Recipe = DS.Model.extend({
 		name: DS.attr('string'),
 		description: DS.attr('string'),

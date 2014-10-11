@@ -7,6 +7,26 @@ define(
 	
 function() {
 
-
+	App.RecipeSerializer = DS.RESTSerializer.extend({
+		extractSingle: function(store, type, payload, id, requestType) {
+			var newObj = {};
+			newObj["recipe"] = payload;
+			console.log(newObj);
+			return this._super(store, type, newObj, id, requestType);
+		},
+		extractArray: function(store, type, payload, id, requestType) {
+				// now our dota match history
+				
+				// var name = type.replace('App.', "");
+				payload.results.forEach(function(object){
+					object.id = object.objectId;
+				});
+				newObj = {};
+				
+				newObj["recipes"] = payload.results;
+				console.log(newObj);
+			return this._super(store, type, newObj, id, requestType);
+		}
+	});
 
 });
