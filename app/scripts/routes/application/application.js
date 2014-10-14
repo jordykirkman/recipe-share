@@ -13,7 +13,7 @@ function() {
 	Ember.$.ajaxPrefilter(function( options, oriOptions, jqXHR ) {
 		jqXHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		if(App.get('session')){
-			jqXHR.setRequestHeader('X-Parse-Session-Token', App.get('session'));
+			jqXHR.setRequestHeader('X-Parse-Session-Token', App.get('sessionToken'));
 		}
 	});
 
@@ -36,28 +36,28 @@ function() {
 		// 	"Content-Type": "application/json"
 		// }
 
-  ajaxError: function(jqXHR) {
+		  ajaxError: function(jqXHR) {
 
 
-    var error = this._super(jqXHR);
+		    var error = this._super(jqXHR);
 
-    if (jqXHR && jqXHR.status === 400) {
-      var response = Ember.$.parseJSON(jqXHR.responseText),
-          errors = {};
+		    if (jqXHR && jqXHR.status === 400) {
+		      var response = Ember.$.parseJSON(jqXHR.responseText),
+		          errors = {};
 
-      if (response.errors !== undefined) {
-        var jsonErrors = response.errors;
+		      if (response.errors !== undefined) {
+		        var jsonErrors = response.errors;
 
-        Ember.EnumerableUtils.forEach(Ember.keys(jsonErrors), function(key) {
+		        Ember.EnumerableUtils.forEach(Ember.keys(jsonErrors), function(key) {
 
-          errors[Ember.String.camelize(key)] = jsonErrors[key];
-        });
-      }
-      return new DS.InvalidError(errors);
-    } else {
-      return error;
-    }
-  }
+		          errors[Ember.String.camelize(key)] = jsonErrors[key];
+		        });
+		      }
+		      return new DS.InvalidError(errors);
+		    } else {
+		      return error;
+		    }
+		  }
 	});
 
 	DS.CustomRestSerializer = DS.RESTSerializer.extend({
@@ -73,7 +73,23 @@ function() {
 
 	});
 
-
+	App.IndexRoute = Ember.Route.extend({
+		activate: function(){
+			var self = this;
+			var data = JSON.parse(localStorage.getItem('sessionToken'));
+			if(data) {
+				console.log(data);
+				// console.log(this.store);
+				this.store.find('user', data.user).then(function(user){
+					App.set('sessionToken', user.get('sessionToken'));
+					self.transitionTo('user', user);
+				});
+			} else {
+				console.log('no user');
+				this.transitionTo('login');
+			}
+		}
+	});
 
 	App.RecipeSerializer = DS.RESTSerializer.extend({
 		extractArray: function(store, type, payload, id, requestType) {

@@ -1,9 +1,13 @@
-<div class="sixteen columns">
-<ul>
+<div class="row">
+<div class="four columns alpha">
+<ul class="standard-list books">
 <li>{{#link-to "book.newrecipe"}}New Recipe{{/link-to}}</li>
 {{#each model.recipes}}
   <li>{{#link-to "recipe" this}}{{name}}{{/link-to}}</li>
 {{/each}}
-<ul>
+</ul>
+</div>
+<div class="eight columns omega">
 {{outlet}}
+</div>
 </div>

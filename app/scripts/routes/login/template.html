@@ -9,7 +9,7 @@
 	<button {{bind-attr class="signup::hide"}}{{action "signup"}}>Sign Up</button>
 	<button {{bind-attr class="signup:hide"}}{{action "toggleSignup"}}>Or Sign Up</button>
 	<button {{bind-attr class="signup::hide"}}{{action "toggleSignup"}}>Or Login</button>
-{{#each errors}}
-  {{message}}
-{{/each}}
+	{{#each errors}}
+		{{message}}
+	{{/each}}
 </div>

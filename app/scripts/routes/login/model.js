@@ -12,6 +12,7 @@ function() {
 		password: DS.attr('string'),
 		email: DS.attr('string'),
 		sessionToken: DS.attr('string'),
+		updatedAt: DS.attr('string'),
 
 		books: DS.hasMany('book', { async: true })
 	});
