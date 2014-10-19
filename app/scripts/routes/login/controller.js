@@ -50,7 +50,7 @@ function() {
 			    	var token = {sessionToken: data.sessionToken, user: data.objectId};
 			    	localStorage.setItem('sessionToken', JSON.stringify(token));
 
-			    	App.set('sessionToken', data.sessionToken);
+			    	// App.set('sessionToken', data.sessionToken);
 
 					data.id = data.objectId;
 			    	self.store.push('user', data);

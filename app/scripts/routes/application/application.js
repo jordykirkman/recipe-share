@@ -11,9 +11,10 @@ function() {
 	});
 
 	Ember.$.ajaxPrefilter(function( options, oriOptions, jqXHR ) {
+		var session = JSON.parse(localStorage.getItem('sessionToken'));
 		jqXHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		if(App.get('session')){
-			jqXHR.setRequestHeader('X-Parse-Session-Token', App.get('sessionToken'));
+		if(session){
+			jqXHR.setRequestHeader('X-Parse-Session-Token', session.sessionToken);
 		}
 	});
 
