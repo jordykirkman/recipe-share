@@ -1,9 +1,10 @@
-<div class="sixteen columns">
-{{test}}
-<h3>New Recipe Book</h3>
-<label>name</label>
-{{input valueBinding="name"}}
-<label>description</label>
-{{textarea valueBinding="description"}}
-<button {{action "saveBook"}}>Save</button>
+<div class="twelve columns fixedheight books">
+	<div class="padd">
+		<h3>New Recipe Book</h3>
+		<label>name</label>
+		{{input valueBinding="model.name"}}
+		<label>description</label>
+		{{textarea valueBinding="model.description"}}
+		<button {{action "saveBook"}}>Save</button>
+	</div>
 </div>

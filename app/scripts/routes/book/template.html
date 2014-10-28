@@ -1,13 +1,21 @@
-<div class="row">
-<div class="four columns alpha">
-<ul class="standard-list books">
-<li>{{#link-to "book.newrecipe"}}New Recipe{{/link-to}}</li>
-{{#each model.recipes}}
-  <li>{{#link-to "recipe" this}}{{name}}{{/link-to}}</li>
-{{/each}}
-</ul>
+
+<div class="four columns fixedheight alpha books">
+	<div class="padd">
+		<ul class="standard-list">
+		<li>{{input valueBinding="share" placeHolder="share with user"}}<button {{action "findUser"}}>Search</button></li>
+		{{#each users}}
+			<a {{action "addToBook" this}}>{{username}}</a>
+		{{/each}}
+		</ul>
+	</div>
+	<ul class="standard-list">
+		<li>{{#link-to "book.newrecipe"}}New Recipe{{/link-to}}</li>
+		{{#each model.recipes}}
+		  <li>{{#link-to "recipe" this}}{{name}}{{/link-to}}</li>
+		{{/each}}
+	</ul>
 </div>
-<div class="eight columns omega">
-{{outlet}}
-</div>
+
+<div class="eight columns fixedheight omega recipe">
+	{{outlet}}
 </div>

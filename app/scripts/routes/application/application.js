@@ -64,13 +64,13 @@ function() {
 	DS.CustomRestSerializer = DS.RESTSerializer.extend({
 
 		// hook for when a single record is retrived from a service
-		extractSingle: function(store, type, payload, id, requestType) {
-			var newObj = {};
-			newObj[type] = payload;
-			payload['id'] = payload.objectId;
-			console.log(newObj);
-			return this._super(store, type, newObj, id, requestType);
-		},
+		// extractSingle: function(store, type, payload, id, requestType) {
+		// 	var newObj = {};
+		// 	newObj[type] = payload;
+		// 	payload['id'] = payload.objectId;
+		// 	console.log(newObj);
+		// 	return this._super(store, type, newObj, id, requestType);
+		// },
 
 	});
 

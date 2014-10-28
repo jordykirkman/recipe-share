@@ -7,11 +7,37 @@
 	transition: all .4s ease;
 }
 
+html {
+	background-color: #666;
+}
+
 /* universal styels */
 h1, h2, h3 {
 }
 a {
 	cursor: pointer;
+}
+.topbar {
+	padding: 10px;
+	color: #fff;
+}
+.topbar h3 {
+	font-size: 14px;
+}
+.padd {
+	margin: 10px;
+}
+.books {
+	background-color: #aaa;
+}
+.recipe {
+	background-color: #e6e6e6;
+}
+.container .column, .container .columns {
+	border-radius: 6px;
+}
+.columns.fixedheight {
+	height: 700px;
 }
 
 .hide, input.hide {
@@ -19,7 +45,6 @@ a {
 }
 
 ul.standard-list {
-	background-color: #666;
 	color: #fff;
 }
 
@@ -33,5 +58,17 @@ ul.standard-list li a {
 
 ul.standard-list li a.active {
 	background-color: #fff;
+	color: #666;
+	border-bottom-left-radius: 6px;
+	border-top-left-radius: 6px;
+}
+
+.user ul.standard-list li a.active {
+	background-color: #aaa;
+	color: #666;
+}
+
+.books ul.standard-list li a.active {
+	background-color: #e6e6e6;
 	color: #666;
 }

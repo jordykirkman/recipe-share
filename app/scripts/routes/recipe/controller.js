@@ -8,8 +8,6 @@ define(
 function() {
 
 	// controller for main route
-	App.BookController = Ember.Controller.extend({
-	
-	});
+
 
 });

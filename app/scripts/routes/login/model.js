@@ -14,7 +14,7 @@ function() {
 		sessionToken: DS.attr('string'),
 		updatedAt: DS.attr('string'),
 
-		books: DS.hasMany('book', { async: true })
+		books: DS.hasMany('book', {inverse: 'users'})
 	});
 
 	App.Recipe = DS.Model.extend({
