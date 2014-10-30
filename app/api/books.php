@@ -146,7 +146,7 @@ if( !isset($_GET['id']) && isset(json_decode(file_get_contents('php://input'))->
 
   $params = urlencode('where={"$or":[' . $stringarray . ']}');
 
-  $ch = curl_init("https://api.parse.com/1/classes/Book?" . json_encode($params));
+  $ch = curl_init("https://api.parse.com/1/classes/Book?" . $params);
   curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($ch, CURLOPT_POST, 0);

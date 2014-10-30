@@ -36,6 +36,7 @@ define(
 		'scripts/routes/user/module',
 		'scripts/routes/newbook/module',
 		'scripts/routes/book/module',
+		'scripts/routes/share/module',
 		'scripts/routes/recipe/module',
 		'scripts/routes/newrecipe/module',
 	],

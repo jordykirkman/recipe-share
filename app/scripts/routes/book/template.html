@@ -1,14 +1,7 @@
 
 <div class="four columns fixedheight alpha books">
-	<div class="padd">
-		<ul class="standard-list">
-		<li>{{input valueBinding="share" placeHolder="share with user"}}<button {{action "findUser"}}>Search</button></li>
-		{{#each users}}
-			<a {{action "addToBook" this}}>{{username}}</a>
-		{{/each}}
-		</ul>
-	</div>
 	<ul class="standard-list">
+		<li>{{#link-to "book.share"}}Contributors{{/link-to}}</li>
 		<li>{{#link-to "book.newrecipe"}}New Recipe{{/link-to}}</li>
 		{{#each model.recipes}}
 		  <li>{{#link-to "recipe" this}}{{name}}{{/link-to}}</li>

@@ -132,6 +132,7 @@ function() {
 
 				this.resource('book', { path: "/book/:book_id" }, function(){
 
+					this.route('share');
 					this.route('newrecipe');
 
 					this.resource('recipe', { path: "/recipe/:recipe_id" }, function(){
