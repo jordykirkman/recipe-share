@@ -15,9 +15,6 @@ function() {
 				var book = this.get('book');
 				var self = this;
 
-				console.log(book);
-				debugger;
-
 				// save the recipe
 				model.save().then(function(recipe){
 					book.get('recipes').addObject(recipe).then(function(){
