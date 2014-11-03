@@ -7,25 +7,21 @@ define(
 	
 function() {
 
-	App.UserNewbookRoute = Ember.Route.extend({
+	App.BookNewrecipeRoute = Ember.Route.extend({
 		model: function(){
 			if(this.get('controller.model')){
 				return this.get('controller.model');
 			} else {
-				return this.store.createRecord('book', {
-					name: "New Book"
+				return this.store.createRecord('recipe', {
+					name: "new recipe"
 				});
 			}
 		},
 		setupController: function(controller, model){
-			var user = this.modelFor('user');
-			
-			model.get('users').then(function(users){
-				users.addObject(user);
-			});
-
+			var book = this.modelFor('book');
+			console.log(book);
 			controller.set('model', model);
-			controller.set('user', user);
+			controller.set('book', book);
 		}
 	});
 

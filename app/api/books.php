@@ -48,10 +48,15 @@ if( !isset($_GET['id']) && isset(json_decode(file_get_contents('php://input'))->
     $data->id = $data->objectId;
     $data->name = $payload['name'];
     $data->description = $payload['description'];
+    $data->users = $payload['users'];
     echo json_encode( $data );
   }
 
 } else if( $_SERVER['REQUEST_METHOD'] == 'PUT' ){
+
+  // --------------------
+  // update book
+  // --------------------
 
   $book = json_decode(file_get_contents('php://input'));
   $userlist = array();
@@ -66,15 +71,25 @@ if( !isset($_GET['id']) && isset(json_decode(file_get_contents('php://input'))->
           array_push($recipelist, $val);
       }
   }
-  $payload = array(
-    'name' => $book->book->name,
-    'description' => $book->book->description->name,
-    'users' => $userlist,
-    'recipes' => $recipelist
-  );
-  
-  // $payload = '{"recipes":{"__op":"AddUnique","objects":["' . $recipe . '"]}}';
 
+  // create the update payload
+  $payload = array(
+    'id' => $_GET['id']
+  );
+  // we only want to send the items being updated, anything sent null from ember should be left out
+  if($book->book->name){
+    $payload['name'] = $book->book->name;
+  }
+  if($book->book->name){
+    $payload['description'] = $book->book->description;
+  }
+  if(count($userlist) > 0){
+    $payload['users'] = $userlist;
+  }
+  if(count($recipelist) > 0){
+    $payload['recipes'] = $recipelist;
+  }
+  
   $ch = curl_init("https://api.parse.com/1/classes/Book/" . $_GET['id']);
   curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -98,11 +113,16 @@ if( !isset($_GET['id']) && isset(json_decode(file_get_contents('php://input'))->
 
   } else {
 
-    echo $data;
+    // echo $data;
+    echo json_encode($payload);
 
   }
 
 } else if($_GET['id']){
+
+  // --------------------
+  // fetch single book by id
+  // --------------------
 
   $ch = curl_init("https://api.parse.com/1/classes/Book/" . $_GET['id']);
   curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);

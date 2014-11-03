@@ -33,9 +33,16 @@ a {
 .recipe {
 	background-color: #e6e6e6;
 }
-.container .column, .container .columns {
-	border-radius: 6px;
+.container .column, .container .columns.books {
+	border-top-left-radius: 6px;
+	border-bottom-left-radius: 6px;
 }
+
+.container .column, .container .columns.recipe {
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
+
 .columns.fixedheight {
 	height: 700px;
 }

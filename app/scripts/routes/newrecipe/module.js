@@ -3,6 +3,7 @@ define(
 	[
 		'text!./template.html',
 		'./controller',
+		'./route',
 	],
 	
 	function(template) {

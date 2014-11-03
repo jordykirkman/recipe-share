@@ -11,7 +11,9 @@
 	<li class="list-title">Books</li>
 	<li>{{#link-to "user.newbook"}}New Book{{/link-to}}</li>
 	{{#each model.books}}
-	  <li>{{#link-to "book" this}}{{name}}{{/link-to}}</li>
+		{{#unless isNew}}
+			<li>{{#link-to "book" this}}{{name}}{{/link-to}}</li>
+		{{/unless}}
 	{{/each}}
 </ul>
 </div>
