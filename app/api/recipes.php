@@ -16,6 +16,7 @@ if( isset(json_decode(file_get_contents('php://input'))->recipe) ){
     'name' => $recipe->recipe->name,
     'ingredients' => $recipe->recipe->ingredients,
     'instructions' => $recipe->recipe->instructions,
+    'description' => $recipe->recipe->description
   );
 
   $ch = curl_init("https://api.parse.com/1/classes/Recipe");

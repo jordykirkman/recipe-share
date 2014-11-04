@@ -9,11 +9,11 @@ function() {
 
 	App.BookNewrecipeRoute = Ember.Route.extend({
 		model: function(){
-			if(this.get('controller.model')){
+			if(this.get('controller.model') && this.get('controller.model.isNew') === true){
 				return this.get('controller.model');
 			} else {
 				return this.store.createRecord('recipe', {
-					name: "new recipe"
+					name: "Your new recipe"
 				});
 			}
 		},

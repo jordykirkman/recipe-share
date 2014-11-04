@@ -1,8 +1,12 @@
 <div class="sixteen columns">
 <h3>New Recipe</h3>
+<label>Name</label>
 {{input valueBinding="model.name"}}
+<label>Description</label>
 {{textarea valueBinding="model.description"}}
+<label>Ingredients</label>
 {{textarea valueBinding="model.ingredients"}}
+<label>Instructions</label>
 {{textarea valueBinding="model.instructions"}}
 <button {{action "saveRecipe"}}>Save</button>
 </div>

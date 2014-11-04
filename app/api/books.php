@@ -24,7 +24,7 @@ if( !isset($_GET['id']) && isset(json_decode(file_get_contents('php://input'))->
   }
   $payload = array(
     'name' => $book->book->name,
-    'description' => $book->book->description->name,
+    'description' => $book->book->description,
     'users' => $userlist
   );
 
