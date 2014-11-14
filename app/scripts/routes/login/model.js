@@ -17,11 +17,6 @@ function() {
 		books: DS.hasMany('book', {inverse: 'users'})
 	});
 
-	App.Recipe = DS.Model.extend({
-		name: DS.attr('string'),
-		description: DS.attr('string'),
-		instructions: DS.attr('string'),
-		ingredients: DS.attr('string'),
-	});
+
 
 });

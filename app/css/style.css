@@ -11,6 +11,11 @@ html {
 	background-color: #666;
 }
 
+input[type="text"], input[type="password"], input[type="email"], textarea, select {
+	width: 100%;
+	box-sizing: border-box;
+}
+
 /* universal styels */
 h1, h2, h3 {
 }

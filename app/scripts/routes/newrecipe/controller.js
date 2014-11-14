@@ -26,4 +26,21 @@ function() {
 		}
 	});
 
+	App.UploadFile = Ember.TextField.extend({
+		tagName: 'input',
+		attributeBindings: ['name'],
+		type: 'file',
+		change: function (e) {
+		    var reader = new FileReader(), 
+		    that = this;        
+		    reader.onload = function (e) {
+		        var file = e.target.result;
+		        Ember.run(function() {
+		            that.set('value', file);
+		        });            
+		    };
+		    return reader.readAsDataURL(e.target.files[0]);
+		}
+	});
+
 });
