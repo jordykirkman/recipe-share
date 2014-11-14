@@ -1,14 +1,23 @@
 <div class="padd">
-	<ul class="standard-list">
-	<li>{{input valueBinding="share" placeHolder="share with user"}}<button {{action "findUser"}}>Search</button></li>
-	{{#each foundUsers}}
-		<a {{action "addToBook" this}}>{{username}}</a>
-	{{/each}}
-	</ul>
-	<ul class="standard-list">
-	<li><h3>Current Contributors</h3></li>
-	{{#each model.users}}
-		<li>{{username}}</li>
-	{{/each}}
-	</ul>
+	<div class="six columns">
+		<label>Share this book with another user</label>
+		{{input valueBinding="share" placeholder="username"}}
+	</div>
+	<div class="two columns">
+		<label>&nbsp</label>
+		<button {{action "findUser"}}>Search</button>
+	</div>
+	<div class="eight columns clearfix">
+		<ul class="standard-list">
+		{{#each foundUsers}}
+			<li><a {{action "addToBook" this}}>{{username}}</a></li>
+		{{/each}}
+		</ul>
+		<ul class="standard-list">
+		<li><h3>Current Contributors</h3></li>
+		{{#each model.users}}
+			<li>{{username}}</li>
+		{{/each}}
+		</ul>
+	</div>
 </div>
