@@ -33,12 +33,7 @@ function() {
 			var id = id ? "?id=" + id : "";
 			return this._super(type) + '.php' + id;
 		},
-		// headers: {
-		// 	"Content-Type": "application/json"
-		// }
-
-		  ajaxError: function(jqXHR) {
-
+		ajaxError: function(jqXHR) {
 
 		    var error = this._super(jqXHR);
 
@@ -58,7 +53,7 @@ function() {
 		    } else {
 		      return error;
 		    }
-		  }
+		}
 	});
 
 	DS.CustomRestSerializer = DS.RESTSerializer.extend({
@@ -76,20 +71,13 @@ function() {
 
 	App.IndexRoute = Ember.Route.extend({
 		activate: function(){
-			var self = this;
 			var data = JSON.parse(localStorage.getItem('sessionToken'));
-			if(data) {
-				console.log(data);
-				// console.log(this.store);
-				this.store.find('user', data.user).then(function(user){
-					App.set('sessionToken', user.get('sessionToken'));
-					self.transitionTo('user', user);
-				});
+			if(data.user) {
+					this.transitionTo('user', data.user);
 			} else {
-				console.log('no user');
 				this.transitionTo('login');
 			}
-		}
+		},
 	});
 
 	App.RecipeSerializer = DS.RESTSerializer.extend({

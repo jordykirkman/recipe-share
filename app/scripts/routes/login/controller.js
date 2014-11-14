@@ -47,16 +47,10 @@ function() {
 				Ember.$.getJSON('api/login.php?username=' + u + '&password=' + p).then(function(data) {
 
 					// login was successful, create a session
-			    	var token = {sessionToken: data.sessionToken, user: data.objectId};
+			    	var token = {sessionToken: data.user.sessionToken, user: data.user.id};
 			    	localStorage.setItem('sessionToken', JSON.stringify(token));
 
-			    	// App.set('sessionToken', data.sessionToken);
-
-					data.id = data.objectId;
-			    	self.store.push('user', data);
-			    	console.log(data);
-			    	var user = self.store.find('user', data.id);
-					self.transitionToRoute('user', user);
+					self.transitionToRoute('user', data.user.id);
 				});
 			}
 		}

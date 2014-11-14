@@ -6,7 +6,7 @@ $session = getallheaders()['X-Parse-Session-Token'];
   $headers = array(  
     "X-Parse-Application-Id: " . $appid,
     "X-Parse-REST-API-Key: " . $apikey,
-    // "X-Parse-Session-Token: " . $session,
+    "X-Parse-Session-Token: " . $session,
     "Content-Type: application/json"
   );
 
@@ -67,15 +67,27 @@ if(json_decode(file_get_contents('php://input'))->user){
 
   // set response header for the app
   $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-  header(':', true, $http_status);
+  // header(':', true, $http_status);
+  // echo $http_status;
+  if (property_exists(json_decode($data), 'error') || empty($data)) {
 
-  if (property_exists(json_decode($data), 'error')) {
+    if(empty($data)){
 
-    $response = array(
-      "errors" => array("user" => array(json_decode($data)->error))
-    );
-    echo json_encode($params);
-    echo json_encode($response);
+      $response = array(
+        "errors" => array("user" => "unauthorized")
+      );
+      header(':', true, 401);
+      echo json_encode($response);
+
+    } else {
+
+      $response = array(
+        "errors" => array("user" => array(json_decode($data)->error))
+      );
+
+      echo json_encode($response);
+
+    }
   } else {
 
     // query books that have this user in it's user list
@@ -101,6 +113,7 @@ if(json_decode(file_get_contents('php://input'))->user){
       "user" => $data,
       "books" => $books->results
     );
+    header(':', true, $http_status);
     echo json_encode($output);
   }
 

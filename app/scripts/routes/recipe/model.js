@@ -13,7 +13,7 @@ function() {
 		instructions: DS.attr('string'),
 		ingredients: DS.attr('string'),
 		recipe: DS.attr('string'),
-		image: DS.attr('file'),
+		image: DS.attr(),
 	});
 
 });

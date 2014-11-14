@@ -14,13 +14,13 @@ $headers = array(
   $p = urlencode("password=" . $password);
   $u = urlencode("username=" . $username);
 
-  $ch = curl_init("https://api.parse.com/1/login?username=" . $username . "&password=" . $password . "&include=Books");
+  $ch = curl_init("https://api.parse.com/1/login?username=" . $username . "&password=" . $password);
   curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($ch, CURLOPT_POST, 0);
   curl_setopt($ch, CURLOPT_HTTPGET, true);
 
-  $data = curl_exec($ch);
+  $data = json_decode(curl_exec($ch));
   // curl_close($ch);
 
   // set response header for the app
@@ -35,7 +35,31 @@ $headers = array(
     echo json_encode($response);
   } else {
 
-    echo $data;
+    // query books that have this user in it's user list
+    $params = urlencode('where={"users":"' . $data->objectId . '"}');
+
+    $d = curl_init('https://api.parse.com/1/classes/Book?' . $params);
+    curl_setopt($d, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($d, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($d, CURLOPT_POST, 0);
+    curl_setopt($d, CURLOPT_HTTPGET, true);
+
+    $books = json_decode(curl_exec($d));
+
+    // map the objectId field to id
+    // put each id in the user's books array
+    foreach($books->results as $key => $val){
+        $val->id = $val->objectId;
+        $data->books[] = $val->objectId;
+    }
+
+    $data->id = $data->objectId;
+    $output = array(
+      "user" => $data,
+      "books" => $books->results
+    );
+    header(':', true, $http_status);
+    echo json_encode($output);
   }
 
 ?>
