@@ -24,7 +24,7 @@ function() {
 			} else {
 				return this.get('model.recipes');
 			}
-		}.property('this.recipeFilter')
+		}.property('this.recipeFilter', 'this.model')
 	
 	});
 
