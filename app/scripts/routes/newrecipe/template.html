@@ -1,18 +1,24 @@
 <div class="eight columns">
 	<div class="padd">
 		<h3>New Recipe</h3>
+	
 		<label>Name</label>
-		{{input valueBinding="model.name"}}
+		{{input valueBinding="model.name" name="name"}}
 		<label>Image</label>
-		{{view App.UploadFile name="image" valueBinding="model.image"}}
+		<form id="form" action="test.php" enctype="multipart/form-data" method="post">
+		<input type="file" id="file" name="file"/>
+		</form>
+		<!-- {{input type="file" valueBinding="model.image"}} -->
 		<label>Description</label>
-		{{{textarea valueBinding="model.description" placeholder="A long time family recipe that everyone forgets the details of..."}}}
+		{{{textarea valueBinding="model.description" name="description" placeholder="A long time family recipe that everyone forgets the details of..."}}}
 		<label>Ingredients</label>
-		{{{textarea valueBinding="model.ingredients" placeholder="1 cup hotsauce, 2 Tbs magic"}}}
+		{{{textarea valueBinding="model.ingredients" name="ingredients" placeholder="1 cup hotsauce, 2 Tbs magic"}}}
 		<label>Instructions</label>
-		{{{textarea valueBinding="model.instructions" placeholder="Whisk together until a porthole to another dimension appears."}}}
+		{{{textarea valueBinding="model.instructions" name="instructions" placeholder="Whisk together until a porthole to another dimension appears."}}}
 		<label>Tags</label>
-		{{textarea valueBinding="model.tags" placeholder="Breakfast, Mexican, gluten free"}}
+		{{textarea valueBinding="model.tags" name="tags" placeholder="Breakfast, Mexican, gluten free"}}
 		<button {{action "saveRecipe"}}>Save</button>
+		
 	</div>
+
 </div>

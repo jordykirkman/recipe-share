@@ -15,32 +15,27 @@ function() {
 				var book = this.get('book');
 				var self = this;
 
-				// save the recipe
-				model.save().then(function(recipe){
-					book.get('recipes').addObject(recipe).then(function(){
-						book.save();
-						self.transitionToRoute('recipe', recipe);
-					});
+				var f = document.getElementById('file').files[0];
+				var fd = new FormData(f);
+                $.ajax({
+               		url: 'api/image.php',
+					data: f,
+					// async: false,
+					processData:false,
+					contentType: false,
+					type:'POST',
+					success: function(response) {
+						model.set('image', response).save().then(function(recipe){
+							book.get('recipes').addObject(recipe).then(function(){
+								book.save();
+								self.transitionToRoute('recipe', recipe);
+							});
+						});
+					}
 				});
 			}
 		}
 	});
 
-	App.UploadFile = Ember.TextField.extend({
-		tagName: 'input',
-		attributeBindings: ['name'],
-		type: 'file',
-		change: function (e) {
-		    var reader = new FileReader(), 
-		    that = this;        
-		    reader.onload = function (e) {
-		        var file = e.target.result;
-		        Ember.run(function() {
-		            that.set('value', file);
-		        });            
-		    };
-		    return reader.readAsDataURL(e.target.files[0]);
-		}
-	});
 
 });

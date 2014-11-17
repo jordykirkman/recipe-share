@@ -16,7 +16,9 @@ if( isset(json_decode(file_get_contents('php://input'))->recipe) ){
     'name' => $recipe->recipe->name,
     'ingredients' => $recipe->recipe->ingredients,
     'instructions' => $recipe->recipe->instructions,
-    'description' => $recipe->recipe->description
+    'description' => $recipe->recipe->description,
+    'image' => $recipe->recipe->image,
+    'tags' => $recipe->recipe->tags
   );
 
   $ch = curl_init("https://api.parse.com/1/classes/Recipe");
@@ -44,6 +46,7 @@ if( isset(json_decode(file_get_contents('php://input'))->recipe) ){
     $data->name = $payload['name'];
     $data->instructions = $payload['instructions'];
     $data->ingredients = $payload['ingredients'];
+    $data->image = $payload['image'];
     echo json_encode( $data );
   }
 
