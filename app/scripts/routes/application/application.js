@@ -72,7 +72,7 @@ function() {
 	App.IndexRoute = Ember.Route.extend({
 		activate: function(){
 			var data = JSON.parse(localStorage.getItem('sessionToken'));
-			if(data.user) {
+			if(data) {
 					this.transitionTo('user', data.user);
 			} else {
 				this.transitionTo('login');
