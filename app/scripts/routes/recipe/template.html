@@ -1,8 +1,16 @@
-<div class="eight columns">
+<div class="grid-container">
 	<div class="padd">
-		{{{model.description}}}<br/>
-		{{{model.ingredients}}}<br/>
-		{{{model.instructions}}}
-		<img {{bind-attr src="image"}}/>
+		<img class="one-third" {{bind-attr src="image"}}/>
+		<div class="two-thirds">
+			<h3>{{model.name}}</h3>
+			<p>{{{model.description}}}</p>
+		</div>
+	</div>
+</div>
+<div class="grid-container">
+	<div class="padd">
+		<p>{{{model.ingredients}}}</p>
+		<p>{{{model.instructions}}}</p>
+		<mark>{{model.tags}}</mark>
 	</div>
 </div>

@@ -12,7 +12,7 @@ function() {
 		description: DS.attr('string'),
 		instructions: DS.attr('string'),
 		ingredients: DS.attr('string'),
-		recipe: DS.attr('string'),
+		tags: DS.attr('string'),
 		image: DS.attr('string'),
 	});
 

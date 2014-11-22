@@ -1,4 +1,4 @@
-<div class="eight columns">
+<div class="grid-container">
 	<div class="padd">
 		<h3>New Recipe</h3>
 	
@@ -16,7 +16,7 @@
 		<label>Instructions</label>
 		{{{textarea valueBinding="model.instructions" name="instructions" placeholder="Whisk together until a porthole to another dimension appears."}}}
 		<label>Tags</label>
-		{{textarea valueBinding="model.tags" name="tags" placeholder="Breakfast, Mexican, gluten free"}}
+		{{input valueBinding="model.tags" name="tags" placeholder="Breakfast, Mexican, gluten free"}}
 		<button {{action "saveRecipe"}}>Save</button>
 		
 	</div>
