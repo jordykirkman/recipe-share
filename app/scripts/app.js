@@ -46,7 +46,7 @@ define(
 	// create a loading route!
 	App.LoadingRoute = Ember.Route.extend();
 
-	var LoadTemplate = Ember.Handlebars.compile('<div class="loading"><h3>Loading data...</h3><img src="../images/loading.gif"/></div>');
+	var LoadTemplate = Ember.Handlebars.compile('<div class="loading"><h3 class="badge"><img class="loading-bar" src="../css/images/loading.gif"/></h3></div>');
 	App.register( 'template:loading', LoadTemplate );
 
 });

@@ -38,6 +38,18 @@
   }
 }
 
+.loading {
+  text-align: center;
+}
+.loading-bar {
+  background-color: darken($color-primary, 20%);
+  padding: 1px;
+  border-top: solid 1px darken($color-primary, 30%);
+  border-left: solid 1px darken($color-primary, 30%);
+  border-bottom: solid 1px lighten($color-primary, 30%);
+  border-right: solid 1px lighten($color-primary, 30%);
+}
+
 nav {}
 article {}
 aside {}

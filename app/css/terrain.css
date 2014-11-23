@@ -652,6 +652,17 @@ main video {
     text-align: center;
     padding-top: 4em; }
 
+.loading {
+  text-align: center; }
+
+.loading-bar {
+  background-color: #caa636;
+  padding: 1px;
+  border-top: solid 1px #a2862b;
+  border-left: solid 1px #a2862b;
+  border-bottom: solid 1px white;
+  border-right: solid 1px white; }
+
 iframe {
   width: 100%;
   display: block;
