@@ -3,9 +3,21 @@
 }
 
 h1, h2, h3, h4, h5, h6 { @extend %heading; }
-.topbar h1, .topbar h2, .topbar h3, .topbar h4, .topbar h5, .topbar h6 { margin-top: 0; color: $white }
+.topbar h1, .topbar h2, .topbar h3, .topbar h4, .topbar h5, .topbar h6 { margin-top: 0; color: $offwhite }
 .topbar {
   color: $white;
+}
+
+h1.badge, h2.badge, h3.badge, h4.badge, h5.badge, h6.badge {
+  padding: $margin-level-one;
+  border-radius: 8px;
+  background-color: $color-primary;
+  border: solid 3px $color-primary-dark;
+  border-top: solid 3px $color-primary-light;
+  color: darken($color-primary, 15%);
+  text-shadow: -2px -2px darken($color-primary, 30%);
+  display: inline-block;
+  margin: 0 0 20px 0;
 }
 
 h1 {

@@ -3,7 +3,7 @@
 		<ul class="standard-list">
 			<li>{{#link-to "book.share"}}Contributors{{/link-to}}</li>
 			<li>{{#link-to "book.newrecipe"}}New Recipe{{/link-to}}</li>
-			<li class="padd">{{input valueBinding="recipeFilter" placeholder="filter by name, ingredient or tag"}}</li>
+			<li class="padd">{{input valueBinding="recipeFilter" placeholder="filter by keyword"}}</li>
 			{{#each filteredRecipes}}
 			  <li>{{#link-to "recipe" this}}{{name}}{{/link-to}}</li>
 			{{/each}}

@@ -1,6 +1,6 @@
-.container {
+.container, .footer {
   max-width: $max-width;
-  padding: $page-margin;
+  padding: $page-margin * 2 $page-margin * 2 0 $page-margin * 2;
 
   @if $center-layout {
     margin-left: auto;
@@ -9,6 +9,32 @@
 
   @media screen and (max-width: $breakpoint-small) {
     padding: $page-margin / 2;
+  }
+}
+
+.container {
+  background-image: url('images/recipebox_top.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: bottom;
+  padding-bottom: 7px;
+}
+
+.footer {
+  background-image: url('images/recipebox_front.png');
+  background-repeat: repeat-x;
+  padding-top: 32%;
+  border-bottom: solid 2px darken($color-secondary, 10%);
+  background-color: $color-secondary-light;
+  position: relative;
+  .footer-interior {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    padding-top: 4em;
   }
 }
 

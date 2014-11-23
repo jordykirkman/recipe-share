@@ -135,8 +135,25 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  background-color: #57857b;
-  color: #171717; }
+  color: #171717;
+  background: #57857b;
+  /* Old browsers */ }
+
+body {
+  background: #57857b;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #79aa95 0%, #57857b 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #79aa95), color-stop(100%, #57857b));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #79aa95 0%, #57857b 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #79aa95 0%, #57857b 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #79aa95 0%, #57857b 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #79aa95 0%, #57857b 100%);
+  /* W3C */ }
 
 p {
   margin-bottom: 1.2em; }
@@ -215,10 +232,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .topbar h1, .topbar h2, .topbar h3, .topbar h4, .topbar h5, .topbar h6 {
   margin-top: 0;
-  color: white; }
+  color: #f2f0d9; }
 
 .topbar {
   color: white; }
+
+h1.badge, h2.badge, h3.badge, h4.badge, h5.badge, h6.badge {
+  padding: 0.8004em;
+  border-radius: 8px;
+  background-color: #dfca87;
+  border: solid 3px #caa636;
+  border-top: solid 3px #f4eed8;
+  color: #cfaf4b;
+  text-shadow: -2px -2px #a2862b;
+  display: inline-block;
+  margin: 0 0 20px 0; }
 
 h1 {
   font-family: 'Handlee', 'Source Sans Pro', 'Helvetica Neue', sans-serif;
@@ -592,14 +620,37 @@ main svg,
 main video {
   margin-bottom: 1.2em; }
 
-.container {
+.container, .footer {
   max-width: 48em;
-  padding: 2.4em;
+  padding: 4.8em 4.8em 0 4.8em;
   margin-left: auto;
   margin-right: auto; }
   @media screen and (max-width: 32em) {
-    .container {
+    .container, .footer {
       padding: 1.2em; } }
+
+.container {
+  background-image: url("images/recipebox_top.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: bottom;
+  padding-bottom: 7px; }
+
+.footer {
+  background-image: url("images/recipebox_front.png");
+  background-repeat: repeat-x;
+  padding-top: 32%;
+  border-bottom: solid 2px #43665e;
+  background-color: #8db5ac;
+  position: relative; }
+  .footer .footer-interior {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    padding-top: 4em; }
 
 iframe {
   width: 100%;
@@ -697,12 +748,14 @@ img.one-third {
     padding-right: 0; } }
 .grid-container.outer {
   border: solid 2px #2f4742;
+  border-bottom: none;
   clear: both;
-  border-radius: 4px; }
+  border-top-left-radius: 4px; }
 
 .grid-container {
   background-color: #eadcaf;
-  padding-left: 1em; }
+  padding-left: 1em;
+  border-top-right-radius: 4px; }
   .grid-container ul.standard-list a.active {
     background-color: #f4eed8; }
   .grid-container .grid-container {
