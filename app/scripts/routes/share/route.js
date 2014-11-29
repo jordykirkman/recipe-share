@@ -7,7 +7,7 @@ define(
 	
 function() {
 
-	App.BookShareRoute = Ember.Route.extend({
+	App.BookIndexRoute = Ember.Route.extend({
 		model: function(){
 			return this.modelFor('book');
 		}

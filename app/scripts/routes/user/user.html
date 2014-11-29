@@ -1,0 +1,27 @@
+<div class="topbar">
+	<div class="one-half">
+		<h4 class="title">Recipe Box</h4>
+	</div>
+	<div class="one-half alignright">
+		Hi {{model.username}}, what should we cook?
+		<button {{action "logout"}}>Log Out</button>
+	</div>
+</div>
+
+<div class="grid-container outer">
+	<div class="one-quarter book">
+	<ul class="standard-list">
+		<li>{{#link-to "user.index"}}Your Settings{{/link-to}}</li>
+		<li>{{#link-to "user.newbook"}}New Book{{/link-to}}</li>
+		<li class="separator">Books</li>
+		{{#each model.books}}
+			{{#unless isNew}}
+				<li>{{#link-to "book" this}}{{name}}{{/link-to}}</li>
+			{{/unless}}
+		{{/each}}
+	</ul>
+	</div>
+	<div class="three-quarters recipe">
+	{{outlet}}
+	</div>
+</div>

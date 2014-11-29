@@ -14,6 +14,7 @@ function() {
 		ingredients: DS.attr('string'),
 		tags: DS.attr('string'),
 		image: DS.attr('string'),
+		deleted: DS.attr('boolean'),
 	});
 
 });

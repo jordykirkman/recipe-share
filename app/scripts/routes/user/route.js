@@ -15,7 +15,6 @@ function() {
 		},
 		actions: {
 			error: function(error, transition) {
-				console.log('hi');
 				this.transitionTo('login');
 				if (error && error.status === 401) {
 					console.log(error);
@@ -28,6 +27,12 @@ function() {
 				return true;
 
 			}
+		}
+	});
+
+	App.UserIndexRoute = Ember.Route.extend({
+		model: function(){
+			return this.modelFor('user');
 		}
 	});
 

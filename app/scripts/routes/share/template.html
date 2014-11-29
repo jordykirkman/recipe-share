@@ -12,17 +12,18 @@
 </div>
 <div class="grid-container">
 	<div class="padd">
-			<ul class="standard-list">
-			{{#each foundUsers}}
-				<li><a {{action "addToBook" this}}>{{username}}</a></li>
-			{{/each}}
-			</ul>
-			<ul class="standard-list">
-			<li><h3>Current Contributors</h3></li>
-			{{#each model.users}}
-				<li>{{username}}</li>
-			{{/each}}
-			</ul>
-		</div>
+		<ul class="standard-list">
+		{{#each foundUsers}}
+			<li><button {{action "addToBook" this}}>+ {{username}}</button></li>
+		{{/each}}
+		</ul>
+		<ul class="standard-list">
+		<li><h3>Current Contributors</h3></li>
+		{{#each model.users}}
+			<li>{{username}}</li>
+		{{/each}}
+		</ul>
+		<button {{action "leaveBook"}}>Leave Book</button>
+
 	</div>
 </div>

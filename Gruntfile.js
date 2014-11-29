@@ -71,6 +71,7 @@ module.exports = function( grunt ) {
 			// build: { src: [''] },
 			scripts: { src: [
 				'dist/scripts/routes',
+				'dist/css/terrain',
 				] }
 		},
 

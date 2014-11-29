@@ -52,9 +52,20 @@ dl {
 .grid-container {
   ul.standard-list {
     list-style: none;
+    margin-top: $line-height;
+
+    li.separator {
+      padding: 0 10px;
+      margin-top: $line-height;
+      line-height: $line-height * 1.5;
+      font-family: $title-font-family;
+      font-weight: bold;
+      border-bottom: solid 1px $color-primary-dark;
+      /*font-size: $font-size-level-four;*/
+    }
 
     a {
-      line-height: 30px;
+      line-height: $line-height * 1.5;
       text-decoration: none;
       padding: 0 10px;
       display: block;

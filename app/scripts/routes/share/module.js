@@ -5,12 +5,13 @@ define(
 		'./controller',
 		'./route',
 		'ember',
+		'scripts/routes/application/application',
 	],
 	
 	function(template) {
 
 	var moduletemplate = Ember.Handlebars.compile(template);
 
-	App.register( 'template:book.share', moduletemplate );
+	App.register( 'template:book.index', moduletemplate );
 
 });

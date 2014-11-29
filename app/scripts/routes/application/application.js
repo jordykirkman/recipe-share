@@ -100,7 +100,6 @@ function() {
 
 		// hook for when a single record is retrived from a service
 		extractSingle: function(store, type, payload, id, requestType) {
-			console.log('ahoy');
 			return this._super(store, type, payload, id, requestType);
 		},
 
@@ -120,7 +119,6 @@ function() {
 
 				this.resource('book', { path: "/book/:book_id" }, function(){
 
-					this.route('share');
 					this.route('newrecipe');
 
 					this.resource('recipe', { path: "/recipe/:recipe_id" }, function(){

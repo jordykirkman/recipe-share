@@ -1,0 +1,8 @@
+<div class="grid-container">
+	<div class="padd">
+		<h4>Your settings</h4>
+		<label>Email</label>
+		{{input valueBinding="model.email"}}
+		{{#if model.isDirty}}<button {{action "save"}}>Save changes</button>{{/if}}
+	</div>
+</div>

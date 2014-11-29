@@ -24,8 +24,10 @@
   background-image: url('images/recipebox_front.png');
   background-repeat: repeat-x;
   padding-top: 32%;
+  border-left: solid 1px darken($color-secondary, 10%);
+  border-right: solid 1px darken($color-secondary, 10%);
   border-bottom: solid 2px darken($color-secondary, 10%);
-  background-color: $color-secondary-light;
+  background-color: lighten($color-secondary, 5%);
   position: relative;
   .footer-interior {
     position: absolute;

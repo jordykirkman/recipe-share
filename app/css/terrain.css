@@ -136,23 +136,23 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   color: #171717;
-  background: #57857b;
+  background: #efece3;
   /* Old browsers */ }
 
 body {
-  background: #57857b;
+  background: #efece3;
   /* Old browsers */
-  background: -moz-linear-gradient(top, #79aa95 0%, #57857b 100%);
+  background: -moz-linear-gradient(top, #cac0a2 0%, #efece3 100%);
   /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #79aa95), color-stop(100%, #57857b));
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cac0a2), color-stop(100%, #efece3));
   /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #79aa95 0%, #57857b 100%);
+  background: -webkit-linear-gradient(top, #cac0a2 0%, #efece3 100%);
   /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #79aa95 0%, #57857b 100%);
+  background: -o-linear-gradient(top, #cac0a2 0%, #efece3 100%);
   /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #79aa95 0%, #57857b 100%);
+  background: -ms-linear-gradient(top, #cac0a2 0%, #efece3 100%);
   /* IE10+ */
-  background: linear-gradient(to bottom, #79aa95 0%, #57857b 100%);
+  background: linear-gradient(to bottom, #cac0a2 0%, #efece3 100%);
   /* W3C */ }
 
 p {
@@ -249,7 +249,7 @@ h1.badge, h2.badge, h3.badge, h4.badge, h5.badge, h6.badge {
   margin: 0 0 20px 0; }
 
 h1 {
-  font-family: 'Handlee', 'Source Sans Pro', 'Helvetica Neue', sans-serif;
+  font-family: "Handlee", "Source Sans Pro", "Helvetica Neue", sans-serif;
   font-size: 3em;
   font-weight: 300;
   margin-top: 0.8004em;
@@ -262,7 +262,7 @@ h1 {
       font-size: 2.25em; } }
 
 h2 {
-  font-family: 'Handlee', 'Source Sans Pro', 'Helvetica Neue', sans-serif;
+  font-family: "Handlee", "Source Sans Pro", "Helvetica Neue", sans-serif;
   font-size: 1.75em;
   font-weight: 500;
   margin-top: 0.9em;
@@ -413,9 +413,18 @@ dl {
     font-weight: 600; }
 
 .grid-container ul.standard-list {
-  list-style: none; }
+  list-style: none;
+  margin-top: 1.2em; }
+  .grid-container ul.standard-list li.separator {
+    padding: 0 10px;
+    margin-top: 1.2em;
+    line-height: 1.8em;
+    font-family: "Handlee", "Source Sans Pro", "Helvetica Neue", sans-serif;
+    font-weight: bold;
+    border-bottom: solid 1px #caa636;
+    /*font-size: $font-size-level-four;*/ }
   .grid-container ul.standard-list a {
-    line-height: 30px;
+    line-height: 1.8em;
     text-decoration: none;
     padding: 0 10px;
     display: block; }
@@ -640,8 +649,10 @@ main video {
   background-image: url("images/recipebox_front.png");
   background-repeat: repeat-x;
   padding-top: 32%;
-  border-bottom: solid 2px #43665e;
-  background-color: #8db5ac;
+  border-left: solid 1px #dcd6c3;
+  border-right: solid 1px #dcd6c3;
+  border-bottom: solid 2px #dcd6c3;
+  background-color: #f8f7f3;
   position: relative; }
   .footer .footer-interior {
     position: absolute;
@@ -758,7 +769,7 @@ img.one-third {
     padding-left: 0;
     padding-right: 0; } }
 .grid-container.outer {
-  border: solid 2px #2f4742;
+  border: solid 2px #cac0a2;
   border-bottom: none;
   clear: both;
   border-top-left-radius: 4px; }

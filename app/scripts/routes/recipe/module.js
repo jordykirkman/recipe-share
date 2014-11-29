@@ -2,9 +2,9 @@ define(
 	// Dependencies
 	[
 		'text!./template.html',
-		'./views',
-		'./controller',
-		'./route',
+		// './views',
+		// './controller',
+		// './route',
 		'./model',
 		'./serializer',
 		'ember',

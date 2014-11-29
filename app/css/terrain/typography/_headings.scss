@@ -21,7 +21,7 @@ h1.badge, h2.badge, h3.badge, h4.badge, h5.badge, h6.badge {
 }
 
 h1 {
-  font-family: 'Handlee', 'Source Sans Pro', 'Helvetica Neue', sans-serif;
+  font-family: $title-font-family;
   font-size: $font-size-level-one;
   font-weight: $font-weight-level-one;
   margin-top: $margin-level-one;
@@ -38,7 +38,7 @@ h1 {
 }
 
 h2 {
-  font-family: 'Handlee', 'Source Sans Pro', 'Helvetica Neue', sans-serif;
+  font-family: $title-font-family;
   font-size: $font-size-level-two;
   font-weight: $font-weight-level-two;
   margin-top: $margin-level-two;

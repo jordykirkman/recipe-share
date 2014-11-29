@@ -3,6 +3,7 @@
 // ## Typography
 
 $font-family:             'Source Sans Pro', 'Helvetica Neue', sans-serif !default;
+$title-font-family:       'Handlee', 'Source Sans Pro', 'Helvetica Neue', sans-serif !default;
 $font-family-body:        $font-family !default;
 $font-family-headings:    $font-family !default;
 $font-family-input:       $font-family !default;
@@ -51,7 +52,7 @@ $color-primary:             #dfca87 !default;
 $color-primary-light:       lighten($color-primary, 20%) !default;
 $color-primary-dark:        darken($color-primary, 20%) !default;
 
-$color-secondary:           #57857b !default;
+$color-secondary:           #efece3 !default;
 $color-secondary-light:     lighten($color-secondary, 20%) !default;
 $color-secondary-dark:      darken($color-secondary, 20%) !default;
 

@@ -1,10 +1,15 @@
 <div class="grid-container">
 	<div class="padd">
-		<img class="one-third" {{bind-attr src="image"}}/>
-		<div class="two-thirds">
+		{{#if model.image}}
+			<img class="one-third" {{bind-attr src="model.image"}}/>
+			<div class="two-thirds">
+				<h3>{{model.name}}</h3>
+				<p>{{{model.description}}}</p>
+			</div>
+		{{else}}
 			<h3>{{model.name}}</h3>
 			<p>{{{model.description}}}</p>
-		</div>
+		{{/if}}
 	</div>
 </div>
 <div class="grid-container">
