@@ -44,7 +44,7 @@ function() {
 				var u = this.get('username');
 				var p = this.get('password');
 				var self = this;
-				Ember.$.getJSON('api/login.php?username=' + u + '&password=' + p).then(function(data) {
+				Ember.$.getJSON('https://recipe-services.herokuapp.com/?username=' + u + '&password=' + p).then(function(data) {
 
 					// login was successful, create a session
 			    	var token = {sessionToken: data.user.sessionToken, user: data.user.id};
