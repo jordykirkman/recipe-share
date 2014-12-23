@@ -20,7 +20,7 @@ function() {
 
 	App.ApplicationAdapter = DS.RESTAdapter.extend({
 		// outputs a different api endpoint depending on environment. get rid of this when we go live
-		host: 'api',
+		host: 'https://recipe-services.herokuapp.com',
 
 		defaultSerializer: "DS/customRest",
 	    findHasMany: function(store, record, url) {
@@ -29,10 +29,10 @@ function() {
 	    	console.log(url);
 		    return url;
 		},
-		buildURL: function(type, id) {
-			var id = id ? "?id=" + id : "";
-			return this._super(type) + '.php' + id;
-		},
+		// buildURL: function(type, id) {
+		// 	var id = id ? "?id=" + id : "";
+		// 	return this._super(type) + '.php' + id;
+		// },
 		ajaxError: function(jqXHR) {
 
 		    var error = this._super(jqXHR);
@@ -54,19 +54,6 @@ function() {
 		      return error;
 		    }
 		}
-	});
-
-	DS.CustomRestSerializer = DS.RESTSerializer.extend({
-
-		// hook for when a single record is retrived from a service
-		// extractSingle: function(store, type, payload, id, requestType) {
-		// 	var newObj = {};
-		// 	newObj[type] = payload;
-		// 	payload['id'] = payload.objectId;
-		// 	console.log(newObj);
-		// 	return this._super(store, type, newObj, id, requestType);
-		// },
-
 	});
 
 	App.IndexRoute = Ember.Route.extend({
