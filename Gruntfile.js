@@ -72,6 +72,8 @@ module.exports = function( grunt ) {
 			scripts: { src: [
 				'dist/scripts/routes',
 				'dist/css/terrain',
+				'dist/css/_default_settings.scss',
+				'dist/css/terrain.scss',
 				] }
 		},
 
