@@ -19,7 +19,7 @@ function() {
 	});
 
 	App.ApplicationAdapter = DS.RESTAdapter.extend({
-		// outputs a different api endpoint depending on environment. get rid of this when we go live
+
 		host: 'https://recipe-services.herokuapp.com',
 
 		defaultSerializer: "DS/customRest",
@@ -29,10 +29,7 @@ function() {
 	    	console.log(url);
 		    return url;
 		},
-		// buildURL: function(type, id) {
-		// 	var id = id ? "?id=" + id : "";
-		// 	return this._super(type) + '.php' + id;
-		// },
+
 		ajaxError: function(jqXHR) {
 
 		    var error = this._super(jqXHR);
@@ -65,22 +62,6 @@ function() {
 				this.transitionTo('login');
 			}
 		},
-	});
-
-	App.RecipeSerializer = DS.RESTSerializer.extend({
-		extractArray: function(store, type, payload, id, requestType) {
-				// now our dota match history
-				console.log(type);
-				// var name = type.replace('App.', "");
-				payload.results.forEach(function(object){
-					object.id = object.objectId;
-				});
-				newObj = {};
-				// newObj[name] = [];
-				newObj["recipes"] = payload.results;
-				console.log(store, type, payload, id, requestType);
-			return this._super(store, type, newObj, id, requestType);
-		}
 	});
 
 	DS.ErrorSerializer = DS.RESTSerializer.extend({
