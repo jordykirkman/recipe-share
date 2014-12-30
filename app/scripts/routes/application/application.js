@@ -12,7 +12,7 @@ function() {
 
 	Ember.$.ajaxPrefilter(function( options, oriOptions, jqXHR ) {
 		var session = JSON.parse(localStorage.getItem('sessionToken'));
-		jqXHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		// jqXHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		if(session){
 			jqXHR.setRequestHeader('X-Parse-Session-Token', session.sessionToken);
 		}
@@ -20,15 +20,7 @@ function() {
 
 	App.ApplicationAdapter = DS.RESTAdapter.extend({
 
-		host: 'https://recipe-services.herokuapp.com',
-
-		defaultSerializer: "DS/customRest",
-	    findHasMany: function(store, record, url) {
-	    	console.log(store);
-	    	console.log(record);
-	    	console.log(url);
-		    return url;
-		},
+		host: 'https://recipeboxapp.herokuapp.com',
 
 		ajaxError: function(jqXHR) {
 
@@ -54,23 +46,21 @@ function() {
 	});
 
 	App.IndexRoute = Ember.Route.extend({
-		activate: function(){
-			var data = JSON.parse(localStorage.getItem('sessionToken'));
-			if(data) {
-					this.transitionTo('user', data.user);
+		model: function(){
+			var self = this;
+			var token = JSON.parse(localStorage.getItem('sessionToken'));
+			if(token === undefined || token === null) {
+				this.transitionTo('login.index');
 			} else {
-				this.transitionTo('login');
+				return this.store.find('user', token.user);
 			}
 		},
-	});
-
-	DS.ErrorSerializer = DS.RESTSerializer.extend({
-
-		// hook for when a single record is retrived from a service
-		extractSingle: function(store, type, payload, id, requestType) {
-			return this._super(store, type, payload, id, requestType);
-		},
-
+		setupController: function(controller, model){
+			if(model){
+				console.log(model);
+				this.transitionTo('user', model);
+			}
+		}
 	});
 
 	App.Router.map(function() {

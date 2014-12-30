@@ -14,7 +14,17 @@
 </div>
 <div class="grid-container">
 	<div class="padd">
-		<p>{{{model.ingredients}}}</p>
+		<ul>
+		{{#each model.ingredientList}}
+			<li>
+			{{#if link}}
+				<a {{bind-attr href="link"}} target="_blank">{{qty}} {{item}}</a>
+			{{else}}
+				{{qty}} {{item}}
+			{{/if}}
+			</li>
+		{{/each}}
+		</ul>
 		<p>{{{model.instructions}}}</p>
 		<mark>{{model.tags}}</mark>
 	</div>

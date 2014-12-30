@@ -44,13 +44,19 @@ function() {
 				var u = this.get('username');
 				var p = this.get('password');
 				var self = this;
-				Ember.$.getJSON('https://recipe-services.herokuapp.com/login?username=' + u + '&password=' + p).then(function(data) {
+				Ember.$.getJSON('https://recipeboxapp.herokuapp.com/login?username=' + u + '&password=' + p).then(function(data) {
 
 					// login was successful, create a session
-			    	var token = {sessionToken: data.user.sessionToken, user: data.user.id};
-			    	localStorage.setItem('sessionToken', JSON.stringify(token));
-
-					self.transitionToRoute('user', data.user.id);
+					if(data){
+				    	var token = {sessionToken: data.sessionToken, user: data.user.id};
+				    	localStorage.setItem('sessionToken', JSON.stringify(token));
+				    	// self.store.push('user', data.user);
+				    	self.store.find('user', data.user.id).then(function(user){
+				    		self.transitionToRoute('user', user);
+				    	});
+					} else {
+						self.transitionTo('login');
+					}
 				});
 			}
 		}
