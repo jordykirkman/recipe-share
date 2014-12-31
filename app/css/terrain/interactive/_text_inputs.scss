@@ -19,6 +19,7 @@ textarea {
   font-family: $font-family-input;
   font-size: 1em;
   font-weight: normal;
+  display: inline;
   color: $input-foreground-color;
   background-color: $input-background-color;
   border-color: $input-border-color;
@@ -44,20 +45,6 @@ textarea {
     box-shadow: none !important;
   }
 }
-input[type='text'].hide,
-input[type='search'].hide,
-input[type='tel'].hide,
-input[type='email'].hide,
-input[type='password'].hide,
-input[type='url'].hide,
-input[type='date'].hide,
-input[type='datetime'].hide,
-input[type='time'].hide,
-input[type='number'].hide,
-input[list].hide,
-textarea.hide {
-  display: none;
-}
 
 textarea {
   min-height: 9em;
@@ -79,4 +66,20 @@ textarea {
 :-ms-input-placeholder {
   font-weight: normal;
   font-family: $font-family-input;
+}
+
+input.hide,
+input[type='text'].hide,
+input[type='search'].hide,
+input[type='tel'].hide,
+input[type='email'].hide,
+input[type='password'].hide,
+input[type='url'].hide,
+input[type='date'].hide,
+input[type='datetime'].hide,
+input[type='time'].hide,
+input[type='number'].hide,
+input[list].hide,
+textarea.hide {
+  display: none;
 }

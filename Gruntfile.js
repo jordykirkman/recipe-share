@@ -39,28 +39,21 @@ module.exports = function( grunt ) {
 					removeCombined:          true,
 					preserveLicenseComments: false,
 					findNestedDependencies:  true,
-					// exclude: [ 'jquery', 'handlebars' ],
-					// map: {
-					// 	'*' : {
-					// 		'ember': 'lib/ember.prod',
-					// 		'ember-data': 'lib/ember-data-canary.prod'
-					// 	}
-					// },
-
-					// map: {
-					// 	'*': {
-					// 		css: 'lib/require/require-css/css'
-					// 	}
-					// },
-
-					// paths: {
-					// 	'jquery': 'empty:',
-					// 	'jqueryui': 'empty:',
-					// 	'handlebars': 'empty:',
-					// 	'ember': 'lib/ember.prod',
-					// 	'ember-data': 'lib/ember-data-canary.prod'
-					// }
 				}
+			}
+		},
+
+		/**
+		 * Sass
+		 */
+		sass: {
+			dist: {
+			  options: {
+			    style: 'expanded'
+			  },
+			  files: {
+			    'app/css/terrain.css': 'app/css/terrain.scss', 
+			  }
 			}
 		},
 
@@ -84,8 +77,10 @@ module.exports = function( grunt ) {
 	 * Tasks!
 	 * Run `grunt [task]` from the project root directory.
 	 */
-	grunt.registerTask( 'default',    ['copy', 'requirejs', 'clean'] );
+	grunt.registerTask( 'default', ['sass', 'copy', 'requirejs', 'clean'] );
 
+
+	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-requirejs');

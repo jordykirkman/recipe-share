@@ -1,5 +1,5 @@
 .container, .footer {
-  max-width: $max-width;
+  /*max-width: $max-width;*/
   padding: $page-margin * 2 $page-margin * 2 0 $page-margin * 2;
 
   @if $center-layout {
