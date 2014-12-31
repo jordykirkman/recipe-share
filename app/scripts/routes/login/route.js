@@ -7,7 +7,10 @@ define(
 	
 function() {
 
-	App.LoginRoute = Ember.Route.extend({
+	App.LoginErrorRoute = Ember.Route.extend({
+		model: function(){
+			return this.modelFor('user');
+		}
 	});
 
 

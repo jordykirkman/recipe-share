@@ -31,13 +31,11 @@ function() {
 				var newUser = this.store.createRecord('user', {username: u, password: p, email: e});
 				newUser.save().then(function(user){
 					self.set('model', user);
-					self.set('errors', []);
-				}, function(response){
-					// runs instead if the call failed
-					response.errors.user.forEach(function(error){
-						self.set('errors', []);
-						self.get('errors').pushObject({message: error});
-					});
+					if(user.get('error')){
+						self.transitionToRoute('login.error', user);
+					} else {
+						self.transitionToRoute('user', user);
+					}
 				});
 			},
 			login: function(){
@@ -55,7 +53,7 @@ function() {
 				    		self.transitionToRoute('user', user);
 				    	});
 					} else {
-						self.transitionTo('login');
+						self.transitionToRoute('login');
 					}
 				});
 			}

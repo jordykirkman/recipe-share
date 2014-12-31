@@ -16,4 +16,8 @@ define(
 
 	App.register( 'template:login', moduletemplate );
 
+	App.register( 'template:login.error', Ember.Handlebars.compile('\
+		<span class="alert">{{model.error}}</span>\
+	') );
+
 });

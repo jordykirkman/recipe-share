@@ -1,8 +1,9 @@
 <div class="sixteen columns">
+	{{outlet}}
 	<label>Username</label>
 	{{input valueBinding="username"}}
 	<label>Password</label>
-	{{input valueBinding="password"}}
+	{{input type="password" valueBinding="password"}}
 	<label {{bind-attr class="signup::hide"}}>Email</label>
 	{{input classBinding="signup::hide" valueBinding="email"}}
 	<button {{bind-attr class="signup:hide"}}{{action "login"}}>Login</button>

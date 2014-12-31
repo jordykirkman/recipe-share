@@ -13,6 +13,7 @@ function() {
 		email: DS.attr('string'),
 		sessionToken: DS.attr('string'),
 		updatedAt: DS.attr('string'),
+		error: DS.attr('string'),
 
 		books: DS.hasMany('book', {inverse: 'users'})
 	});
