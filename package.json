@@ -1,5 +1,5 @@
 {
-  "name": "Family Recipe",
+  "name": "recipe",
   "version": "0.0.1",
   "description": "An app to share your recipes",
   "scripts": {},
@@ -8,7 +8,8 @@
     "grunt": "~0.4.x",
     "grunt-contrib-clean": "~0.5.x",
     "grunt-contrib-copy": "~0.4.x",
-    "grunt-contrib-requirejs": "~0.4.x"
+    "grunt-contrib-requirejs": "~0.4.x",
+    "grunt-contrib-sass": "~0.8.1"
   },
   "private": true
 }
