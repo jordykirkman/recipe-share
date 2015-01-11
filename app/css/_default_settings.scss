@@ -48,12 +48,12 @@ $margin-level-six:        $line-height * 1.25 !default;
 
 // ## Colours
 
-$color-primary:             #dfca87 !default;
-$color-primary-light:       lighten($color-primary, 20%) !default;
+$color-primary:             #e8dcbc !default;
+$color-primary-light:       lighten($color-primary, 10%) !default;
 $color-primary-dark:        darken($color-primary, 20%) !default;
 
 $color-secondary:           #efece3 !default;
-$color-secondary-light:     lighten($color-secondary, 20%) !default;
+$color-secondary-light:     lighten($color-secondary, 10%) !default;
 $color-secondary-dark:      darken($color-secondary, 20%) !default;
 
 $black:                     hsl(0,0%,9%) !default;

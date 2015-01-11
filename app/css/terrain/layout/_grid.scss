@@ -97,6 +97,7 @@ $grid-module-width: $max-width / 2 + $gutter / 2 !default;
   border-bottom: none;
   clear: both;
   border-top-left-radius: 4px;
+  padding-bottom: 20px;
 }
 .grid-container {
   background-color: lighten($color-primary, 10%);

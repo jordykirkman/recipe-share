@@ -1,6 +1,6 @@
 .container, .footer {
   /*max-width: $max-width;*/
-  padding: $page-margin * 2 $page-margin * 2 0 $page-margin * 2;
+  padding: $page-margin * 2 $page-margin * 2.7 0 $page-margin * 2.7;
 
   @if $center-layout {
     margin-left: auto;
@@ -13,30 +13,27 @@
 }
 
 .container {
-  background-image: url('images/recipebox_top.png');
+  background-image: url('images/recipebox_top.jpg');
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: bottom;
-  padding-bottom: 7px;
 }
 
 .footer {
-  background-image: url('images/recipebox_front.png');
-  background-repeat: repeat-x;
-  padding-top: 32%;
-  border-left: solid 1px darken($color-secondary, 10%);
-  border-right: solid 1px darken($color-secondary, 10%);
-  border-bottom: solid 2px darken($color-secondary, 10%);
+  background-image: url('images/recipebox_bottom.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: top center;
+  padding-top: 42%;
   background-color: lighten($color-secondary, 5%);
   position: relative;
   .footer-interior {
     position: absolute;
     width: 100%;
-    height: 100%;
+    padding-top: 18%;
     top: 0;
     left: 0;
     text-align: center;
-    padding-top: 4em;
   }
 }
 

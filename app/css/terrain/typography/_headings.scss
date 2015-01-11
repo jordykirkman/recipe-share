@@ -12,12 +12,12 @@ h1.badge, h2.badge, h3.badge, h4.badge, h5.badge, h6.badge {
   padding: $margin-level-one;
   border-radius: 8px;
   background-color: $color-primary;
-  border: solid 3px $color-primary-dark;
-  border-top: solid 3px $color-primary-light;
+  border: solid 2px $color-primary-dark;
+  border-top: solid 2px $color-primary-light;
   color: darken($color-primary, 15%);
   text-shadow: -2px -2px darken($color-primary, 30%);
   display: inline-block;
-  margin: 0 0 20px 0;
+  margin: 0 0 10px 0;
 }
 
 h1 {
