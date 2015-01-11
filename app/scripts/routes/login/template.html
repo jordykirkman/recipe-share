@@ -1,16 +1,24 @@
-<div class="sixteen columns">
-	{{outlet}}
-	<label>Username</label>
-	{{input valueBinding="username"}}
-	<label>Password</label>
-	{{input type="password" valueBinding="password"}}
-	<label {{bind-attr class="signup::hide"}}>Email</label>
-	{{input classBinding="signup::hide" valueBinding="email"}}
-	<button {{bind-attr class="signup:hide"}}{{action "login"}}>Login</button>
-	<button {{bind-attr class="signup::hide"}}{{action "signup"}}>Sign Up</button>
-	<button {{bind-attr class="signup:hide"}}{{action "toggleSignup"}}>Or Sign Up</button>
-	<button {{bind-attr class="signup::hide"}}{{action "toggleSignup"}}>Or Login</button>
-	{{#each errors}}
-		{{message}}
-	{{/each}}
+<div class="grid-container outer">
+	<div class="padd">
+		<div class="one-half">
+			{{outlet}}
+			<label>Username</label>
+			{{input valueBinding="username"}}
+		</div>
+		<div class="one-half">
+			<label>Password</label>
+			{{input type="password" valueBinding="password"}}
+		</div>
+		<div class="one-half">
+			<label {{bind-attr class="signup::hide"}}>Email</label>
+			{{input classBinding="signup::hide" valueBinding="email"}}
+		</div>
+		<div class="one-half">
+			<label>&nbsp</label>
+			<button {{bind-attr class="signup:hide"}}{{action "login"}}>Login</button>
+			<button {{bind-attr class="signup::hide"}}{{action "signup"}}>Sign Up</button>
+			<button {{bind-attr class="signup:hide"}}{{action "toggleSignup"}}>Or Sign Up</button>
+			<button {{bind-attr class="signup::hide"}}{{action "toggleSignup"}}>Or Login</button>
+		</div>
+	</div>
 </div>
