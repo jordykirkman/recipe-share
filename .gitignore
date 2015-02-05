@@ -13,3 +13,5 @@ app/api/config.php
 .Trashes
 ehthumbs.db
 Thumbs.db
+assets
+node_modules
