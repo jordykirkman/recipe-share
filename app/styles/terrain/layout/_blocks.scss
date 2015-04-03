@@ -1,0 +1,107 @@
+.container, .footer {
+  /*max-width: $max-width;*/
+  padding: $page-margin * 2 $page-margin * 2.7 0 $page-margin * 2.7;
+
+  @if $center-layout {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media screen and (max-width: $breakpoint-small) {
+    padding: $page-margin / 2;
+  }
+}
+
+.container {
+  background-image: url('../images/recipebox_top.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: bottom;
+}
+
+.footer {
+  background-image: url('../images/recipebox_bottom.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: top center;
+  padding-top: 42%;
+  background-color: lighten($color-secondary, 5%);
+  position: relative;
+  .footer-interior {
+    position: absolute;
+    width: 100%;
+    padding-top: 18%;
+    top: 0;
+    left: 0;
+    text-align: center;
+  }
+}
+
+.loading {
+  text-align: center;
+}
+.loading-bar {
+  background-color: darken($color-primary, 20%);
+  padding: 1px;
+  border-top: solid 1px darken($color-primary, 30%);
+  border-left: solid 1px darken($color-primary, 30%);
+  border-bottom: solid 1px lighten($color-primary, 30%);
+  border-right: solid 1px lighten($color-primary, 30%);
+}
+
+nav {}
+article {}
+aside {}
+header {}
+footer {}
+main {}
+
+iframe {
+  width: 100%;
+  display: block;
+  border: 0;
+}
+
+img, video, audio {
+  display: block;
+  width: auto;
+  max-width: 100%;
+}
+
+video, audio {
+  background-color: $black;
+}
+
+blockquote {
+  margin-bottom: $line-height;
+  padding-left: $gutter / 2;
+  border-left: $heavy-stroke solid $default-border-color;
+}
+
+pre {
+  margin-bottom: $line-height;
+  background-color: $gray-dark;
+  color: $gray-lighter;
+  border-radius: $radius;
+  padding: $line-height / 2;
+  white-space: pre-wrap;
+  max-height: 80vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+details {
+  margin-bottom: $line-height;
+
+  summary { cursor: pointer; }
+
+  summary:focus {
+    outline: 0;
+    color: $color-primary;
+  }
+}
+
+math {
+  display: block;
+  margin-bottom: $line-height;
+}
