@@ -3,10 +3,10 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
 	actions: {
-		error: function(error, transition) {
+		error: function() {
 			localStorage.removeItem('sessionToken');
-			this.transitionTo('login');
+			this.transitionTo('index');
 		}
 	}
-	
+
 });

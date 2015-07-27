@@ -35,13 +35,14 @@ export default Ember.Controller.extend({
 			var u = this.get('username');
 			var p = this.get('password');
 			var self = this;
-			Ember.$.getJSON('https://recipeboxapp.herokuapp.com/login?username=' + u + '&password=' + p).then(function(data) {
+			Ember.$.getJSON('api/login?username=' + u + '&password=' + p).then(function(data) {
 
 				// login was successful, create a session
 				if(data){
 			    	var token = {sessionToken: data.sessionToken, user: data.user.id};
+			    	console.log(data.user);
 			    	localStorage.setItem('sessionToken', JSON.stringify(token));
-			    	// self.store.push('user', data.user);
+			    	// self.store.pushPayload('user', data.user);
 			    	self.store.find('user', data.user.id).then(function(user){
 			    		self.transitionToRoute('user', user);
 			    	});
