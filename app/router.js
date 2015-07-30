@@ -7,10 +7,10 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.resource('user', { path: '/:user_id' }, function() {
-    this.route('newbook');
+    this.resource('newbook');
     this.resource('book', { path: '/:book_id' }, function() {
-      this.route('newrecipe');
-      this.route('recipe', { path: '/:recipe_id' });
+      this.resource('newrecipe');
+      this.resource('recipe', { path: '/:recipe_id' });
     });
   });
 });

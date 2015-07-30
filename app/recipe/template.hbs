@@ -1,7 +1,7 @@
 <div class="grid-container">
 	<div class="padd">
 		{{#if model.image}}
-			<img class="one-third" {{bind-attr src="model.image"}}/>
+			<img class="one-third" {{bind-attr src="image"}}/>
 			<div class="two-thirds">
 				<h3>{{model.name}}</h3>
 				<p>{{{model.description}}}</p>
@@ -15,12 +15,12 @@
 <div class="grid-container">
 	<div class="padd">
 		<ul>
-		{{#each model.ingredientList}}
+		{{#each ingredient in model.ingredientList}}
 			<li>
-			{{#if link}}
-				<a {{bind-attr href="link"}} target="_blank">{{qty}} {{item}}</a>
+			{{#if ingredient.link}}
+				<a {{bind-attr href="link"}} target="_blank">{{ingredient.qty}} {{ingredient.item}}</a>
 			{{else}}
-				{{qty}} {{item}}
+				{{ingredient.qty}} {{ingredient.item}}
 			{{/if}}
 			</li>
 		{{/each}}

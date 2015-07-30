@@ -2,12 +2,12 @@
 	<div class="one-third">
 		<ul class="standard-list">
 			<li>{{#link-to "book.index"}}"{{model.name}}" Settings{{/link-to}}</li>
-			<li>{{#link-to "book.newrecipe"}}New Recipe{{/link-to}}</li>
+			<li>{{#link-to "newrecipe"}}New Recipe{{/link-to}}</li>
 			<li class="padd">{{input valueBinding="recipeFilter" placeholder="filter by keyword"}}</li>
 			<li class="separator">Recipes</li>
-			{{#each filteredRecipes}}
-				{{#unless deleted}}
-			  <li>{{#link-to "recipe" this}}{{name}}{{/link-to}}</li>
+			{{#each recipe in filteredRecipes}}
+				{{#unless recipe.deleted}}
+			  <li>{{#link-to "recipe" recipe}}{{recipe.name}}{{/link-to}}</li>
 				{{/unless}}
 			{{/each}}
 		</ul>
