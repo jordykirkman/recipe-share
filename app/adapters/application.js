@@ -6,26 +6,38 @@ export default DS.RESTAdapter.extend({
 	// host: 'https://recipeboxapp.herokuapp.com',
 	host: 'api',
 
-	ajaxError: function(jqXHR) {
+	headers: function(){
+		var headers = {};
+		headers['X-Parse-Master-Key'] = '16J8JcA01nk476MPuG7Tcon9iTKe8tNGai4o4Mvy';
 
-	    var error = this._super(jqXHR);
+		var token = localStorage.getItem('sessionToken');
+		if(token){
+			headers['X-Parse-Session-Token'] = JSON.parse(token).sessionToken;
+		}
+		
+		return headers;
+	}.property(),
 
-	    if (jqXHR && jqXHR.status === 400) {
-	      var response = Ember.$.parseJSON(jqXHR.responseText),
-	          errors = {};
+	// ajaxError: function(jqXHR) {
 
-	      if (response.errors !== undefined) {
-	        var jsonErrors = response.errors;
+	//     var error = this._super(jqXHR);
 
-	        Ember.EnumerableUtils.forEach(Ember.keys(jsonErrors), function(key) {
+	//     if (jqXHR && jqXHR.status === 400) {
+	//       var response = Ember.$.parseJSON(jqXHR.responseText),
+	//           errors = {};
 
-	          errors[Ember.String.camelize(key)] = jsonErrors[key];
-	        });
-	      }
-	      return new DS.InvalidError(errors);
-	    } else {
-	      return error;
-	    }
-	}
+	//       if (response.errors !== undefined) {
+	//         var jsonErrors = response.errors;
+
+	//         Ember.EnumerableUtils.forEach(Ember.keys(jsonErrors), function(key) {
+
+	//           errors[Ember.String.camelize(key)] = jsonErrors[key];
+	//         });
+	//       }
+	//       return new DS.InvalidError(errors);
+	//     } else {
+	//       return error;
+	//     }
+	// }
 	
 });

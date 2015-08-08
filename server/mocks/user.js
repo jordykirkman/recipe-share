@@ -18,6 +18,9 @@ module.exports = function(app) {
       "Content-Type": "application/json",
     }
 
+    if(req.get("X-Parse-Master-Key")){
+      headers["X-Parse-Master-Key"] = req.get("X-Parse-Master-Key");
+    }
     if(req.get("X-Parse-Session-Token")){
       headers["X-Parse-Session-Token"] = req.get("X-Parse-Session-Token");
     }
@@ -83,40 +86,38 @@ module.exports = function(app) {
     request(options, function (error, response, body) {
       var user = JSON.parse(body);
 
-        // if theres an error
-        if(user.error){
-          res.send(user);
-        } else {
-          // otherwise we need the user's books
+      // if theres an error
+      if(user.error){
+        res.send(user);
+      } else {
+        // otherwise we need the user's books
 
-          // lets format the first part of our response
+        // lets format the first part of our response
         returnObj = {};
-          returnObj['user'] = user;
-          returnObj['user']['id'] = user.objectId;
+        returnObj['user'] = user;
+        returnObj['user']['id'] = user.objectId;
 
-          // lets get the user's books
-        var subHeaders = req.headers;
-        subHeaders["X-Parse-Session-Token"] = user.sessionToken;
-
-          // this is the object parse needs to search books by user id
-          var params = encodeURIComponent('where={"users":"' + user.objectId + '"}');
+        // this is the object parse needs to search books by user id
+        var params = encodeURIComponent('where={"users":"' + user.objectId + '"}');
         var subOptions = {
           url: 'https://api.parse.com/1/classes/Book?' + params,
-          headers: subHeaders,
+          headers: req.headers,
           method: 'GET',
         }
+        console.log(req.headers);
 
         // put the books into the users books array, ember likes it this way
         request(subOptions, function (error, response, body) {
           var books = JSON.parse(body).results;
+          console.log(books);
           returnObj['user']['books'] = [];
-            returnObj['books'] = books;
-            books.forEach(function(book){
-              book['id'] = book.objectId;
-              returnObj['user']['books'].push(book.objectId);
-            });
-            res.send(JSON.stringify(returnObj));
+          returnObj['books'] = books;
+          books.forEach(function(book){
+            book['id'] = book.objectId;
+            returnObj['user']['books'].push(book.objectId);
           });
+          res.send(returnObj);
+        });
       }
     })
   });
@@ -124,7 +125,7 @@ module.exports = function(app) {
   // create a new user
   userRouter.post('/', function(req, res) {
     var data = req.body.user;
-
+    console.log(req.body);
     var options = {
       url: 'https://api.parse.com/1/users/',
       headers: req.headers,

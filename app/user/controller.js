@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
 
 			localStorage.removeItem('sessionToken');
 
-			this.transitionToRoute('login');
+			this.transitionToRoute('index');
 
 		},
 		save: function(){

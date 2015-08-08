@@ -1,16 +1,22 @@
-export function initialize(/* container, application */) {
+// export function initialize(/* container, application */) {
   // application.inject('route', 'foo', 'service:foo');
-}
+// }
 
 export default {
 	name: 'facebook',
-	initialize: function() {
+	initialize: function(container, application) {
 	var fbAsyncInit = function() {
 		FB.init({
 			appId		: '1662676217287124',
 			xfbml		: true,
 			version		: 'v2.4'
 		});
+		// FB.getLoginStatus(function(response) {
+		// 	if(response.status === 'connected'){
+		// 		var headers = {"X-Parse-Session-Token": response.authResponse.accessToken};
+		// 		application.set('globalHeaders', headers);
+		// 	}
+		// });
 	};
  
 	(function(d, s, id){

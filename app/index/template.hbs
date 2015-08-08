@@ -14,7 +14,7 @@
 			{{input classBinding="signup::hide" valueBinding="email"}}
 		</div>
 		<div class="one-half">
-			<label>&nbsp</label>
+			<button class="check-login" {{action 'facebookLogin'}}>Facebook login</button>
 			<button {{bind-attr class="signup:hide"}}{{action "login"}}>Login</button>
 			<button {{bind-attr class="signup::hide"}}{{action "signup"}}>Sign Up</button>
 			<button {{bind-attr class="signup:hide"}}{{action "toggleSignup"}}>Or Sign Up</button>

@@ -18,9 +18,12 @@ module.exports = function(app) {
       "Content-Type": "application/json",
     }
 
-    if(req.get("X-Parse-Session-Token")){
-      headers["X-Parse-Session-Token"] = req.get("X-Parse-Session-Token");
+    if(req.get("X-Parse-Master-Key")){
+      headers["X-Parse-Master-Key"] = req.get("X-Parse-Master-Key");
     }
+  if(req.get("X-Parse-Session-Token")){
+    headers["X-Parse-Session-Token"] = req.get("X-Parse-Session-Token");
+  }
 
     req.headers = headers;
     
