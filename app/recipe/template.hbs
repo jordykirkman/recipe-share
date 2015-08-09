@@ -1,19 +1,15 @@
 <div class="grid-container">
 	<div class="padd">
-		{{#if model.image}}
-			<img class="one-third" {{bind-attr src="image"}}/>
-			<div class="two-thirds">
-				<h3>{{model.name}}</h3>
-				<p>{{{model.description}}}</p>
-			</div>
-		{{else}}
-			<h3>{{model.name}}</h3>
-			<p>{{{model.description}}}</p>
-		{{/if}}
+		<h3>{{model.name}}</h3>
+		<button {{action 'optionsToggle'}}>options</button>
+		<p>{{{model.description}}}</p>
 	</div>
 </div>
 <div class="grid-container">
 	<div class="padd">
+
+	{{#unless options}}
+
 		<ul>
 		{{#each ingredient in model.ingredientList}}
 			<li>
@@ -27,5 +23,13 @@
 		</ul>
 		<p>{{{model.instructions}}}</p>
 		<mark>{{model.tags}}</mark>
+
+	{{else}}
+
+		{{#each book in controllers.user.model.books}}
+			<button {{action 'copyToBook' book}}>{{book.name}}</button>
+		{{/each}}
+
+	{{/unless}}
 	</div>
 </div>
