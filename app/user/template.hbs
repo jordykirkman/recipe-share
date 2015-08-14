@@ -1,27 +1,24 @@
-<div class="topbar">
-	<div class="one-half">
-		<h4 class="title">Recipe Box</h4>
-	</div>
-	<div class="one-half alignright">
+<div class="row">
+	<div class="topbar">
 		Hi {{model.username}}, what should we cook?
-		<button {{action "logout"}}>Log Out</button>
+		<button class="button small" {{action "logout"}}>Log Out</button>
 	</div>
 </div>
+<div class="row collapse">
+	<div class="large-4 columns">
+		<ul class="side-nav">
+			<li>{{#link-to "user.index"}}Your Settings{{/link-to}}</li>
+			<li>{{#link-to "newbook"}}New Book{{/link-to}}</li>
+			<li class="separator">Books</li>
+			{{#each book in model.books}}
+			
+				<li>{{#link-to "book" book}}{{book.name}}{{/link-to}}</li>
 
-<div class="grid-container outer">
-	<div class="one-quarter book">
-	<ul class="standard-list">
-		<li>{{#link-to "user.index"}}Your Settings{{/link-to}}</li>
-		<li>{{#link-to "newbook"}}New Book{{/link-to}}</li>
-		<li class="separator">Books</li>
-		{{#each book in model.books}}
-		
-			<li>{{#link-to "book" book}}{{book.name}}{{/link-to}}</li>
-
-		{{/each}}
-	</ul>
+			{{/each}}
+		</ul>
+		{{outlet 'book'}}
 	</div>
-	<div class="three-quarters recipe">
-	{{outlet}}
-	</div>
+	
+	{{outlet 'recipe'}}
+	
 </div>

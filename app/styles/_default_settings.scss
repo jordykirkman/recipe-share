@@ -56,7 +56,7 @@ $color-secondary:           #efece3 !default;
 $color-secondary-light:     lighten($color-secondary, 20%) !default;
 $color-secondary-dark:      darken($color-secondary, 20%) !default;
 
-$black:                     hsl(0,0%,9%) !default;
+$black:                     hsl(30,100%,20%) !default;
 $offwhite:                  #f2f0d9;
 $white:                     lighten($black, 93.5%) !default;
 $gray-darker:               lighten($black, 13.5%) !default;
@@ -211,7 +211,7 @@ $baseline-grid: false !default;
 
 // Misc
 
-$radius: .15em !default;
+$radius: .4em !default;
 $border-width: .125em !default;
 
 // Tabs

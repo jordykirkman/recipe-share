@@ -125,7 +125,7 @@ module.exports = function(app) {
   // create a new user
   userRouter.post('/', function(req, res) {
     var data = req.body.user;
-    console.log(req.body);
+
     var options = {
       url: 'https://api.parse.com/1/users/',
       headers: req.headers,
@@ -134,12 +134,33 @@ module.exports = function(app) {
     }
 
     request.post(options, function (error, response, body) {
-          var finalResponse = {};
-          finalResponse['user'] = JSON.parse(body);
-          finalResponse['user']['id'] = JSON.parse(body).objectId;
-          res.send(JSON.stringify(finalResponse));
-        }
-    );
+      var user = JSON.parse(body);
+      var returnObj = {};
+      returnObj['user'] = JSON.parse(body);
+      returnObj['user']['id'] = JSON.parse(body).objectId;
+
+      // this is the object parse needs to search books by user id
+      var params = encodeURIComponent('where={"users":"' + user.objectId + '"}');
+      var subOptions = {
+        url: 'https://api.parse.com/1/classes/Book?' + params,
+        headers: req.headers,
+        method: 'GET',
+      }
+
+      // put the books into the users books array, ember likes it this way
+      request(subOptions, function (error, response, body) {
+        var books = JSON.parse(body).results;
+        console.log(books);
+        returnObj['user']['books'] = [];
+        returnObj['books'] = books;
+        books.forEach(function(book){
+          book['id'] = book.objectId;
+          returnObj['user']['books'].push(book.objectId);
+        });
+        res.send(JSON.stringify(returnObj));
+      });
+
+    });
   });
 
   // update user by id

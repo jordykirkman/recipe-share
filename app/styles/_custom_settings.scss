@@ -1,0 +1,48 @@
+ul {
+  list-style: none;
+}
+
+input.hide {
+  display: none;
+}
+
+body {
+  background-image: url('images/recipe-box-blurred.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+a.active {
+  border-top: solid 1px $gray-darker;
+  border-left: solid 1px $gray-darker;
+  border-bottom: solid 1px $gray-darker;
+}
+
+.recipe {
+  border-top: solid 1px $gray-darker;
+  border-left: solid 1px $gray-darker;
+  border-right: solid 1px $gray-darker;
+  padding-bottom: 120px;
+  background-image: url('images/recipe-share-footer.png');
+  background-position: right bottom;
+  background-repeat: no-repeat;
+}
+
+.tab {
+  margin-bottom: 0;
+  background-color: transparent;
+  border-top-right-radius: $radius;
+  border-top-left-radius: $radius;
+  border-top: solid 1px $gray-darker;
+  border-left: solid 1px $gray-darker;
+  border-right: solid 1px $gray-darker;
+  color: $gray-darker;
+  &:hover {
+    background-color: $gray-lighter;
+    color: $gray-darker;
+  }
+  &:focus {
+    background-color: transparent;
+    color: $gray-darker;
+  }
+}

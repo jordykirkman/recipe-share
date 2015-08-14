@@ -20,6 +20,7 @@
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.0",
+    "broccoli-sass": "^0.6.6",
     "connect-restreamer": "^1.0.2",
     "ember-cli": "0.2.0",
     "ember-cli-app-version": "0.3.2",
@@ -36,6 +37,5 @@
     "glob": "^4.5.3",
     "morgan": "^1.6.1"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

@@ -1,35 +1,34 @@
-<div class="grid-container">
-	<div class="padd">
-		<h3>{{model.name}}</h3>
-		<button {{action 'optionsToggle'}}>options</button>
-		<p>{{{model.description}}}</p>
-	</div>
+<div class="large-8 columns text-right collapse">
+	<a class="button small tab" {{action 'optionsToggle'}}>options</a>
+	<a class="button small tab" {{action 'optionsToggle'}}>options</a>
 </div>
-<div class="grid-container">
-	<div class="padd">
+<div class="large-8 columns recipe collapse">
+		<h3>{{model.name}}</h3>
+		
+		<p>{{{model.description}}}</p>
 
-	{{#unless options}}
+		{{#unless options}}
 
-		<ul>
-		{{#each ingredient in model.ingredientList}}
-			<li>
-			{{#if ingredient.link}}
-				<a {{bind-attr href="link"}} target="_blank">{{ingredient.qty}} {{ingredient.item}}</a>
-			{{else}}
-				{{ingredient.qty}} {{ingredient.item}}
-			{{/if}}
-			</li>
-		{{/each}}
-		</ul>
-		<p>{{{model.instructions}}}</p>
-		<mark>{{model.tags}}</mark>
+			<ul>
+			{{#each ingredient in model.ingredientList}}
+				<li>
+				{{#if ingredient.link}}
+					<a {{bind-attr href="link"}} target="_blank">{{ingredient.qty}} {{ingredient.item}}</a>
+				{{else}}
+					{{ingredient.qty}} {{ingredient.item}}
+				{{/if}}
+				</li>
+			{{/each}}
+			</ul>
+			<p>{{{model.instructions}}}</p>
 
-	{{else}}
+			<span class="label">{{model.tags}}</span>
+
+		{{else}}
 
 		{{#each book in controllers.user.model.books}}
 			<button {{action 'copyToBook' book}}>{{book.name}}</button>
 		{{/each}}
 
 	{{/unless}}
-	</div>
 </div>
