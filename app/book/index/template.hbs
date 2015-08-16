@@ -1,0 +1,30 @@
+<div class="large-8 columns recipe collapse">
+
+	<div class="padd">
+		<div class="three-quarters">
+			<label>Share this book with another user</label>
+			{{input valueBinding="share" placeholder="username"}}
+		</div>
+		<div class="one-quarter">
+			<label>&nbsp</label>
+			<button {{action "findUser"}}>Search</button>
+		</div>
+	</div>
+
+	<div class="padd">
+		<ul class="standard-list">
+		{{#each user in foundUsers}}
+			<li><button {{action "addToBook" this}}>+ {{user.username}}</button></li>
+		{{/each}}
+		</ul>
+		<ul class="standard-list">
+		<li><h3>Current Contributors</h3></li>
+		{{#each user in model.users}}
+			<li>{{user.username}}</li>
+		{{/each}}
+		</ul>
+		<button {{action "leaveBook"}}>Leave Book</button>
+
+	</div>
+
+</div>

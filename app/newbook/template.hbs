@@ -1,10 +1,8 @@
-<div class="grid-container">
-	<div class="padd">
-		<h3>New Recipe Book</h3>
-		<label>name</label>
-		{{input valueBinding="model.name"}}
-		<label>description</label>
-		{{textarea valueBinding="model.description"}}
-		<button {{action "saveBook"}}>Save</button>
-	</div>
+<div class="large-8 column recipe">
+	<h3>New Recipe Book</h3>
+	<label>name</label>
+	{{input valueBinding="model.name"}}
+	<label>description</label>
+	{{textarea valueBinding="model.description"}}
+	<button {{action "saveBook"}}>Save</button>
 </div>

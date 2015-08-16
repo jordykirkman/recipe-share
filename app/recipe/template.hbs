@@ -1,11 +1,11 @@
 <div class="large-8 columns text-right collapse">
-	<a class="button small tab" {{action 'optionsToggle'}}>options</a>
-	<a class="button small tab" {{action 'optionsToggle'}}>options</a>
+	<a class="button small tab" {{action 'optionsToggle'}}>share</a>
+	<a {{bind-attr class=":button :small :tab options:active"}} {{action 'optionsToggle'}}>options</a>
 </div>
-<div class="large-8 columns recipe collapse">
+<div class="large-8 columns recipe tabbed collapse">
 		<h3>{{model.name}}</h3>
 		
-		<p>{{{model.description}}}</p>
+		<p>{{{'recipe-formatting' model.description}}}</p>
 
 		{{#unless options}}
 

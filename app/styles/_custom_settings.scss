@@ -12,20 +12,48 @@ body {
   background-size: cover;
 }
 
-a.active {
-  border-top: solid 1px $gray-darker;
-  border-left: solid 1px $gray-darker;
-  border-bottom: solid 1px $gray-darker;
+.main-container {
+  position: relative;
+}
+
+.row.collapse > .column.recipe,
+.row.collapse > .columns.recipe {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
 }
 
 .recipe {
-  border-top: solid 1px $gray-darker;
-  border-left: solid 1px $gray-darker;
-  border-right: solid 1px $gray-darker;
+  background-color: $gray-lighter;
   padding-bottom: 120px;
   background-image: url('images/recipe-share-footer.png');
+  position: absolute;
+  height: 100%;
+  right: 0;
   background-position: right bottom;
   background-repeat: no-repeat;
+  &.tabbed {
+    top: 45px;
+  }
+}
+
+.sidebar {
+  padding-top: 45px;
+  ul.side-nav {
+    li a {
+      color: $black;
+      border-top-left-radius: $radius;
+      border-bottom-left-radius: $radius;
+      border-top: solid 1px $gray-lighter;
+      border-left: solid 1px $gray-lighter;
+      border-bottom: solid 1px $gray-lighter;
+      &:hover {
+        background-color: transparent;
+      }
+      &.active:hover, &.active, &:focus, &:active {
+        background-color: $gray-lighter;
+      }
+    }
+  }
 }
 
 .tab {
@@ -33,9 +61,9 @@ a.active {
   background-color: transparent;
   border-top-right-radius: $radius;
   border-top-left-radius: $radius;
-  border-top: solid 1px $gray-darker;
-  border-left: solid 1px $gray-darker;
-  border-right: solid 1px $gray-darker;
+  border-top: solid 1px $gray-lighter;
+  border-left: solid 1px $gray-lighter;
+  border-right: solid 1px $gray-lighter;
   color: $gray-darker;
   &:hover {
     background-color: $gray-lighter;
@@ -44,5 +72,8 @@ a.active {
   &:focus {
     background-color: transparent;
     color: $gray-darker;
+  }
+  &.active {
+    background-color: $gray-lighter;
   }
 }

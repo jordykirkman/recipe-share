@@ -3,26 +3,9 @@
 
 	<label>Name</label>
 	{{input valueBinding="model.name" name="name"}}
-	<label>Description</label>
-	{{{textarea valueBinding="model.description" name="description" placeholder="A long time family recipe that everyone forgets the details of..."}}}
-	<label>Ingredients <button {{action "addIngredient"}}>+</button></label>
-	{{#each ingredients}}
-	<div class="ingredient">
-		<div class="one-third">
-			{{input valueBinding="qty" placeholder="amount"}}
-		</div>
-		<div class="one-third">
-			{{input valueBinding="item" placeholder="ingredient"}}
-		</div>
-		<div class="one-third">
-			<button {{action "removeIngredient" this}}>X</button>
-		</div>
-		{{input classBinding="no-margin" valueBinding="link" placeholder="http://exoticspices.com/buy"}}
-	</div>
-	{{/each}}
-	<!-- {{{textarea valueBinding="model.ingredients" name="ingredients" placeholder="1 cup hotsauce, 2 Tbs magic"}}} -->
-	<label>Instructions</label>
-	{{{textarea valueBinding="model.instructions" name="instructions" placeholder="Whisk together until a porthole to another dimension appears."}}}
+
+	<p>{{{textarea valueBinding="model.description" name="description" placeholder="A long time family recipe that everyone forgets the details of..."}}}</p>
+
 	<label>Tags</label>
 	{{input valueBinding="model.tags" name="tags" placeholder="Breakfast, Mexican, gluten free"}}
 	<button {{action "saveRecipe"}}>Save</button>
