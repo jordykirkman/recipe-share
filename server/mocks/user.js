@@ -104,14 +104,13 @@ module.exports = function(app) {
           headers: req.headers,
           method: 'GET',
         }
-        console.log(req.headers);
 
         // put the books into the users books array, ember likes it this way
         request(subOptions, function (error, response, body) {
           var books = JSON.parse(body).results;
-          console.log(books);
+
           returnObj['user']['books'] = [];
-          returnObj['books'] = books;
+          // returnObj['books'] = books;
           books.forEach(function(book){
             book['id'] = book.objectId;
             returnObj['user']['books'].push(book.objectId);

@@ -17,11 +17,5 @@ export default Ember.Route.extend({
 			});
 		}
 	},
-	setupController: function(controller, model){
-		var book = this.modelFor('book');
-		console.log(book);
-		controller.set('model', model);
-		controller.set('book', book);
-	}
 	
 });

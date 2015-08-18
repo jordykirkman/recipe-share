@@ -36,9 +36,8 @@ module.exports = function(app) {
     // if a list of ids is in the query string, fetch them all
     if(req.query.ids){
 
-      var objects = [];
-      req.query.ids.forEach(function(id){
-        objects.push('{"objectId":"' + id + '"}');
+      var objects = req.query.ids.map(function(id){
+        return '{"objectId":"' + id + '"}';
       });
       var params = encodeURIComponent('where={"$or":[' + objects.toString() + ']}');
 
@@ -50,14 +49,29 @@ module.exports = function(app) {
 
       request(options, function (error, response, body) {
         var formattedResponse = {};
-        formattedResponse['books'] = [];
 
-          JSON.parse(body).results.forEach(function(item){
-            item.id = item.objectId;
-            formattedResponse['books'].push(item);
-          });
+        var books = JSON.parse(body).results.map(function(book){
+          book.id = book.objectId;
+          return book;
+        });
+        formattedResponse['books'] = books;
+        var bookIds = books.map(function(book){
+          return book.id;
+        });
+
+        var recipeParams = encodeURIComponent('where={"books":{"$or":' + bookIds + '}}');
+        var recipeOptions = {
+          url: 'https://api.parse.com/1/classes/Recipe?' + params,
+          method: 'GET',
+          headers: req.headers
+        }
+        request(recipeOptions, function (error, response, body) {
+          var recipes = JSON.parse(body).results;
+          console.log(recipes);
           res.send(JSON.stringify(formattedResponse));
 
+        });
+        
       })
 
     } else {
@@ -99,10 +113,32 @@ module.exports = function(app) {
     }
 
     request(options, function (error, response, body) {
-        var finalResponse = {'book': JSON.parse(body)};
+        var book = JSON.parse(body);
+        var finalResponse = {'book': book};
         finalResponse.book.id = finalResponse.book.objectId;
-        res.send(JSON.stringify(finalResponse));
 
+        var recipeParams = encodeURIComponent('where={"books":"' + book.objectId + '"}');
+        var recipeOptions = {
+          url: 'https://api.parse.com/1/classes/Recipe?' + recipeParams,
+          headers: req.headers,
+          method: 'GET',
+        }
+
+        // put the books into the users books array, ember likes it this way
+        request(recipeOptions, function (error, response, body) {
+          var recipes = JSON.parse(body).results;
+          var recipeIds = recipes.map(function(recipe){
+            return recipe.objectId;
+          });
+          recipes = recipes.map(function(recipe){
+            recipe.id = recipe.objectId;
+            return recipe;
+          });
+          finalResponse['book']['recipes'] = recipeIds;
+          finalResponse['recipes'] = recipes;
+          console.log(recipes);
+          res.send(finalResponse);
+        });
     });
   });
 

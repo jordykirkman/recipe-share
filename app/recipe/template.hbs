@@ -4,23 +4,10 @@
 </div>
 <div class="large-8 columns recipe tabbed collapse">
 		<h3>{{model.name}}</h3>
-		
-		<p>{{{'recipe-formatting' model.description}}}</p>
 
 		{{#unless options}}
 
-			<ul>
-			{{#each ingredient in model.ingredientList}}
-				<li>
-				{{#if ingredient.link}}
-					<a {{bind-attr href="link"}} target="_blank">{{ingredient.qty}} {{ingredient.item}}</a>
-				{{else}}
-					{{ingredient.qty}} {{ingredient.item}}
-				{{/if}}
-				</li>
-			{{/each}}
-			</ul>
-			<p>{{{model.instructions}}}</p>
+			<p>{{{'recipe-formatting' model.description}}}</p>
 
 			<span class="label">{{model.tags}}</span>
 

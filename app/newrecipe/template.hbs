@@ -8,6 +8,11 @@
 
 	<label>Tags</label>
 	{{input valueBinding="model.tags" name="tags" placeholder="Breakfast, Mexican, gluten free"}}
+
+	{{#each book in controllers.user.model.books}}
+		<button class="tiny button" {{action 'addBookToRecipe' book}}>{{book.name}}</button>
+	{{/each}}
+
 	<button {{action "saveRecipe"}}>Save</button>
 	
 </div>
