@@ -1,0 +1,9 @@
+.checkbox-list {
+  width: 20px;
+  height: 20px;
+  float: left;
+  border: solid 1px $gray-darker;
+  &.checked {
+    background-color: $gray-darker;
+  }
+}

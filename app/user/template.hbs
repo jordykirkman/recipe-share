@@ -10,8 +10,15 @@
 			<li>{{#link-to "user.index"}}Your Settings{{/link-to}}</li>
 			<li>{{#link-to "newbook"}}New Book{{/link-to}}</li>
 			<li>{{#link-to "newrecipe"}}New Recipe{{/link-to}}</li>
-			<li class="separator"><h3>Books</h3></li>
-
+			
+			{{#if controllers.book.model}}
+				<li class="title"><h3>{{controllers.book.model.name}}:</h3></li>
+			{{else}}
+				<li class="separator"><h3>Books</h3></li>
+			{{/if}}
+			
+		</ul>
+		<ul {{bind-attr class=":side-nav controllers.book.model:shrink"}}>	
 			{{#each book in model.books}}
 				<li>{{#link-to "book" book}}{{book.name}}{{/link-to}}</li>
 			{{/each}}

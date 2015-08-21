@@ -9,8 +9,9 @@
 	<label>Tags</label>
 	{{input valueBinding="model.tags" name="tags" placeholder="Breakfast, Mexican, gluten free"}}
 
+	<label>Include in books</label>
 	{{#each book in controllers.user.model.books}}
-		<button class="tiny button" {{action 'addBookToRecipe' book}}>{{book.name}}</button>
+		{{checkbox-list model=book contextList=model.books}}
 	{{/each}}
 
 	<button {{action "saveRecipe"}}>Save</button>

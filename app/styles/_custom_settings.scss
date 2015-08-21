@@ -36,21 +36,46 @@ body {
   }
 }
 
+@keyframes fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 .sidebar {
   padding-top: 45px;
   ul.side-nav {
-    li a {
-      color: $black;
-      border-top-left-radius: $radius;
-      border-bottom-left-radius: $radius;
-      border-top: solid 1px $gray-lighter;
-      border-left: solid 1px $gray-lighter;
-      border-bottom: solid 1px $gray-lighter;
-      &:hover {
-        background-color: transparent;
-      }
-      &.active:hover, &.active, &:focus, &:active {
-        background-color: $gray-lighter;
+    padding: 0;
+    -webkit-transition: all 1s ease-in;
+    max-height: 400px;
+    li.title {
+      animation: fade-in 1s ease;
+    }
+    &.shrink {
+      -webkit-transition: all 1s ease-out;
+      max-height: 0;
+      overflow: hidden
+    }
+    li {
+      a {
+        color: $black;
+        border-top-left-radius: $radius;
+        border-bottom-left-radius: $radius;
+        border-top: solid 1px $gray-lighter;
+        border-left: solid 1px $gray-lighter;
+        border-bottom: solid 1px $gray-lighter;
+
+        &.shrink.active, &.shrink.display {
+          max-height: inherit;
+          border-top: solid 1px $gray-lighter;
+          border-left: solid 1px $gray-lighter;
+          border-bottom: solid 1px $gray-lighter;
+        }
+        &:hover {
+          background-color: transparent;
+        }
+        &.active:hover, &.active, &:focus, &:active {
+          background-color: $gray-lighter;
+        }
       }
     }
   }

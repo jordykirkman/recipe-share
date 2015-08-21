@@ -7,5 +7,8 @@ export default Ember.Route.extend({
 			outlet: 'book',
 		});
 	},
+	deactivate: function(){
+		this.controllerFor('book').set('model', null);
+	}
 
 });

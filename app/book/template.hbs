@@ -1,6 +1,5 @@
 <ul class="side-nav">
 	<li class="padd">{{input valueBinding="recipeFilter" placeholder="filter by keyword"}}</li>
-	<li class="separator"><h3>{{model.name}}:</h3></li>
 	{{#each recipe in filteredRecipes}}
 		{{#unless recipe.deleted}}
 	  <li>{{#link-to "recipe" recipe}}{{recipe.name}}{{/link-to}}</li>

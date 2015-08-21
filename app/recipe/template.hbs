@@ -3,18 +3,19 @@
 	<a {{bind-attr class=":button :small :tab options:active"}} {{action 'optionsToggle'}}>options</a>
 </div>
 <div class="large-8 columns recipe tabbed collapse">
-		<h3>{{model.name}}</h3>
+	<h3>{{model.name}}</h3>
 
-		{{#unless options}}
+	{{#unless options}}
 
-			<p>{{{'recipe-formatting' model.description}}}</p>
+		<p>{{{'recipe-formatting' model.description}}}</p>
 
-			<span class="label">{{model.tags}}</span>
+		<span class="label">{{model.tags}}</span>
 
-		{{else}}
+	{{else}}
 
+		<label>Include in books</label>
 		{{#each book in controllers.user.model.books}}
-			<button {{action 'copyToBook' book}}>{{book.name}}</button>
+			{{checkbox-list model=book contextList=model.books}}
 		{{/each}}
 
 	{{/unless}}
