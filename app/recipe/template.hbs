@@ -7,14 +7,14 @@
 
 	{{#unless options}}
 
-		<p>{{{'recipe-formatting' model.description}}}</p>
+		<p>{{recipe-formatting "modeldescription"}}</p>
 
 		<span class="label">{{model.tags}}</span>
 
 	{{else}}
 
 		<label>Include in books</label>
-		{{#each book in controllers.user.model.books}}
+		{{#each controllers.user.model.books as |book|}}
 			{{checkbox-list model=book contextList=model.books}}
 		{{/each}}
 

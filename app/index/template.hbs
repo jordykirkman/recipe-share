@@ -2,23 +2,23 @@
 	<div class="large-6 columns">
 		{{outlet}}
 		<label>Username</label>
-		{{input valueBinding="username"}}
+		{{input value=username}}
 	</div>
 	<div class="large-6 columns">
 		<label>Password</label>
-		{{input type="password" valueBinding="password"}}
+		{{input type="password" value=password}}
 	</div>
 </div>
 <div class="row">
 	<div class="large-6 columns">
-		<label {{bind-attr class="signup::hide"}}>Email</label>
-		{{input classBinding="signup::hide" valueBinding="email"}}
+		<label class="{{signup::hide}}">Email</label>
+		{{input class="signup::hide" value="email"}}
 	</div>
 	<div class="large-6 columns">
 		<button class="check-login" {{action 'facebookLogin'}}>Facebook login</button>
-		<button {{bind-attr class="signup:hide"}}{{action "login"}}>Login</button>
-		<button {{bind-attr class="signup::hide"}}{{action "signup"}}>Sign Up</button>
-		<button {{bind-attr class="signup:hide"}}{{action "toggleSignup"}}>Or Sign Up</button>
-		<button {{bind-attr class="signup::hide"}}{{action "toggleSignup"}}>Or Login</button>
+		<button class="{{signup:hide}}"{{action "login"}}>Login</button>
+		<button class="{{signup::hide}}"{{action "signup"}}>Sign Up</button>
+		<button class="{{signup:hide}}"{{action "toggleSignup"}}>Or Sign Up</button>
+		<button class="{{signup::hide}}"{{action "toggleSignup"}}>Or Login</button>
 	</div>
 </div>

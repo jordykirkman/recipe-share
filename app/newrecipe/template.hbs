@@ -2,15 +2,15 @@
 	<h3>New Recipe</h3>
 
 	<label>Name</label>
-	{{input valueBinding="model.name" name="name"}}
+	{{input value=model.name name="name"}}
 
-	<p>{{{textarea valueBinding="model.description" name="description" placeholder="A long time family recipe that everyone forgets the details of..."}}}</p>
+	<p>{{{textarea value=model.description name="description" placeholder="A long time family recipe that everyone forgets the details of..."}}}</p>
 
 	<label>Tags</label>
-	{{input valueBinding="model.tags" name="tags" placeholder="Breakfast, Mexican, gluten free"}}
+	{{input value=model.tags name="tags" placeholder="Breakfast, Mexican, gluten free"}}
 
 	<label>Include in books</label>
-	{{#each book in controllers.user.model.books}}
+	{{#each controllers.user.model.books as |book|}}
 		{{checkbox-list model=book contextList=model.books}}
 	{{/each}}
 

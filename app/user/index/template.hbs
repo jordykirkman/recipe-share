@@ -1,6 +1,6 @@
 <div class="large-8 columns recipe collapse">
 	<h4>Your settings</h4>
 	<label>Email</label>
-	{{input valueBinding="model.email"}}
+	{{input value=model.email}}
 	{{#if model.isDirty}}<button {{action "save"}}>Save changes</button>{{/if}}
 </div>

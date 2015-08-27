@@ -3,7 +3,7 @@
 	<div class="padd">
 		<div class="three-quarters">
 			<label>Share this book with another user</label>
-			{{input valueBinding="share" placeholder="username"}}
+			{{input value=share placeholder="username"}}
 		</div>
 		<div class="one-quarter">
 			<label>&nbsp</label>
@@ -13,13 +13,13 @@
 
 	<div class="padd">
 		<ul class="standard-list">
-		{{#each user in foundUsers}}
+		{{#each foundUsers as |user|}}
 			<li><button {{action "addToBook" this}}>+ {{user.username}}</button></li>
 		{{/each}}
 		</ul>
 		<ul class="standard-list">
 		<li><h3>Current Contributors</h3></li>
-		{{#each user in model.users}}
+		{{#each model.users as |user|}}
 			<li>{{user.username}}</li>
 		{{/each}}
 		</ul>

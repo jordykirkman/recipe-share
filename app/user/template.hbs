@@ -18,8 +18,8 @@
 			{{/if}}
 			
 		</ul>
-		<ul {{bind-attr class=":side-nav controllers.book.model:shrink"}}>	
-			{{#each book in model.books}}
+		<ul class="side-nav {{controllers.book.model:shrink}}">	
+			{{#each model.books as |book|}}
 				<li>{{#link-to "book" book}}{{book.name}}{{/link-to}}</li>
 			{{/each}}
 

@@ -2,8 +2,6 @@
   "predef": [
     "document",
     "window",
-    "FB",
-    "moment",
     "-Promise"
   ],
   "browser": true,

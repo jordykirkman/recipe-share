@@ -7,7 +7,6 @@
 # dependencies
 /node_modules
 /bower_components
-/design_assets
 
 # misc
 /.sass-cache
@@ -16,4 +15,3 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
-.vagrant

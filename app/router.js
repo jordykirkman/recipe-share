@@ -6,11 +6,11 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.resource('user', { path: '/:user_id' }, function() {
-    this.resource('newbook');
-    this.resource('newrecipe');
-    this.resource('book', { path: '/:book_id' }, function() {
-      this.resource('recipe', { path: '/:recipe_id' });
+  this.route('user', { path: '/:user_id' }, function() {
+    this.route('newbook', {resetNamespace: true});
+    this.route('newrecipe', {resetNamespace: true});
+    this.route('book', { path: '/:book_id', resetNamespace: true }, function() {
+      this.route('recipe', { path: '/:recipe_id', resetNamespace: true  });
     });
   });
 });
