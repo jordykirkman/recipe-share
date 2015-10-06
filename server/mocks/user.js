@@ -34,17 +34,27 @@ module.exports = function(app) {
   userRouter.get('/', function(req, res) {
 
     // if a list of ids is in the query string, fetch them all
-    if(req.query.ids || req.query.username){
+    if(req.query.ids || req.query.username || req.query.facebookUser){
 
-      var objects = [];
       if(req.query.ids){
+
+        var objects = [];
         req.query.ids.forEach(function(id){
           objects.push('{"objectId":"' + id + '"}');
         });
+        var params = encodeURIComponent('where={"$or":[' + objects.toString() + ']}');
+
       } else if(req.query.username){
+
+        var objects = [];
         objects.push('{"username":"' + req.query.username + '"}');
+        var params = encodeURIComponent('where={"$or":[' + objects.toString() + ']}');
+
+      } else if(req.query.facebookUser){
+
+        var params = encodeURIComponent('where={"facebookUser":"' + req.query.facebookUser + '"}');
+
       }
-      var params = encodeURIComponent('where={"$or":[' + objects.toString() + ']}');
 
       var options = {
         url: 'https://api.parse.com/1/users?' + params,
@@ -54,13 +64,14 @@ module.exports = function(app) {
 
       request(options, function (error, response, body) {
         var formattedResponse = {};
-        formattedResponse['users'] = [];
 
-          JSON.parse(body).results.forEach(function(item){
-            item.id = item.objectId;
-            formattedResponse['users'].push(item);
-          });
-          res.send(JSON.stringify(formattedResponse));
+        var userArray = JSON.parse(body).results.map(function(item){
+          item['id'] = item.objectId;
+          delete item.objectId;
+          return item;
+        });
+        formattedResponse['users'] = userArray;
+        res.send(JSON.stringify(formattedResponse));
 
       })
 
@@ -106,17 +117,51 @@ module.exports = function(app) {
         }
 
         // put the books into the users books array, ember likes it this way
-        request(subOptions, function (error, response, body) {
-          var books = JSON.parse(body).results;
+        // request(subOptions, function (error, response, body) {
+        //   var books = JSON.parse(body).results;
 
-          returnObj['user']['books'] = [];
-          // returnObj['books'] = books;
-          books.forEach(function(book){
-            book['id'] = book.objectId;
-            returnObj['user']['books'].push(book.objectId);
-          });
+        //   returnObj['user']['books'] = [];
+        //   // returnObj['books'] = books;
+        //   var bookIds = books.map(function(book){
+        //     return book.objectId;
+        //   });
+        //   returnObj['user']['books'] = bookIds;
+        //   var bookModels = books.map(function(book){
+        //     book.id = book.objectId;
+        //     return book;
+        //   });
+        //   returnObj['books'] = bookModels;
+
+          // TEST CODE --------------------------------
+
+
+    //     var recipeParams = encodeURIComponent('where={"$or":[{"books":{"$in":' + one of the array of ids + '}]}');
+    //     var recipeOptions = {
+    //       url: 'https://api.parse.com/1/classes/Recipe?' + recipeParams,
+    //       headers: req.headers,
+    //       method: 'GET',
+    //     }
+
+    //     // put the books into the users books array, ember likes it this way
+    //     request(recipeOptions, function (error, response, body) {
+    //       var recipes = JSON.parse(body).results;
+    //       var recipeIds = recipes.map(function(recipe){
+    //         return recipe.objectId;
+    //       });
+    //       recipes = recipes.map(function(recipe){
+    //         recipe.id = recipe.objectId;
+    //         return recipe;
+    //       });
+    //       finalResponse['book']['recipes'] = recipeIds;
+    //       finalResponse['recipes'] = recipes;
+    //       console.log(recipes);
+    //       res.send(finalResponse);
+    //     });
+    // });
+      // -------------------------------------------------
+
           res.send(returnObj);
-        });
+        // });
       }
     })
   });
@@ -149,7 +194,6 @@ module.exports = function(app) {
       // put the books into the users books array, ember likes it this way
       request(subOptions, function (error, response, body) {
         var books = JSON.parse(body).results;
-        console.log(books);
         returnObj['user']['books'] = [];
         returnObj['books'] = books;
         books.forEach(function(book){

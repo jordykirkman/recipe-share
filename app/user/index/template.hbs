@@ -3,4 +3,10 @@
 	<label>Email</label>
 	{{input value=model.email}}
 	{{#if model.isDirty}}<button {{action "save"}}>Save changes</button>{{/if}}
+	<h4>Invites</h4>
+	{{#each bookInvites as |book|}}
+		{{book.name}}
+		<button {{action "respondToBookInvite" book userController.model true}}>Yes</button>
+		<button {{action "respondToBookInvite" book userController.model}}>No</button>
+	{{/each}}
 </div>

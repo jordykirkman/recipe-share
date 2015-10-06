@@ -1,8 +1,8 @@
 <ul class="side-nav">
 	<li class="padd">{{input value=recipeFilter placeholder="filter by keyword"}}</li>
-	{{#each recipe in filteredRecipes}}
+	{{#each filteredRecipes as |recipe|}}
 		{{#unless recipe.deleted}}
-	  <li>{{#link-to "recipe" recipe}}{{recipe.name}}{{/link-to}}</li>
+	  <li>{{#link-to "book.recipe" recipe}}{{recipe.name}}{{/link-to}}</li>
 		{{/unless}}
 	{{/each}}
 </ul>

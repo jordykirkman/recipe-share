@@ -26,22 +26,27 @@ export default Ember.Controller.extend({
 				authData['facebook']['id'] = response.authResponse.userID;
 				authData['facebook']['access_token'] = response.authResponse.accessToken;
 				authData['facebook']['expiration_date'] = expiration;
-				var newUser = JSON.stringify({user: {authData: authData}});
-				Ember.$.ajax('api/users', {
-					type: 'POST',
-					data: newUser,
-					contentType: 'application/json',
-					success: function(response){
-						var user = JSON.parse(response);
-						console.log(user);
+				FB.api('/me', function(meResponse) {
+					console.log(meResponse);
+					var newUser = JSON.stringify({user: {'authData': authData, 'username': meResponse.name, 'facebookUser': response.authResponse.userID}});
+					Ember.$.ajax('api/users', {
+						type: 'POST',
+						data: newUser,
+						contentType: 'application/json',
+						success: function(response){
+							var user = JSON.parse(response);
+							console.log(user);
 
-						var token = {authData: authData};
-						localStorage.setItem('sessionToken', JSON.stringify(token));
+							var token = {authData: authData};
+							localStorage.setItem('sessionToken', JSON.stringify(token));
 
-						controller.store.pushPayload('user', user);
-						controller.transitionTo('user', user.user.id);
-					}
+							controller.store.pushPayload('user', user);
+							controller.transitionToRoute('user', user.user.id);
+						}
+					});
 				});
+			}, {
+				scope: 'email'
 			});
 		},
 

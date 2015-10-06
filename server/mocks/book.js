@@ -33,8 +33,50 @@ module.exports = function(app) {
   // get all books or get by query string
   bookRouter.get('/', function(req, res) {
 
-    // if a list of ids is in the query string, fetch them all
-    if(req.query.ids){
+    if(req.query.users){
+
+      var params = encodeURIComponent('where={"users":"' + req.query.users + '"}');
+
+      var options = {
+        url: 'https://api.parse.com/1/classes/Book?' + params,
+        method: 'GET',
+        headers: req.headers
+      }
+
+      request(options, function (error, response, body) {
+        var formattedResponse = {};
+
+        var books = JSON.parse(body).results.map(function(book){
+          book.id = book.objectId;
+          return book;
+        });
+        formattedResponse['books'] = books;
+        res.send(JSON.stringify(formattedResponse));
+
+      });
+    } else if(req.query.userInvites){
+
+      var params = encodeURIComponent('where={"userInvites":"' + req.query.userInvites + '"}');
+
+      var options = {
+        url: 'https://api.parse.com/1/classes/Book?' + params,
+        method: 'GET',
+        headers: req.headers
+      }
+
+      request(options, function (error, response, body) {
+        var formattedResponse = {};
+
+        var books = JSON.parse(body).results.map(function(book){
+          book.id = book.objectId;
+          return book;
+        });
+        formattedResponse['books'] = books;
+        res.send(JSON.stringify(formattedResponse));
+
+      });
+
+    } else if(req.query.ids){
 
       var objects = req.query.ids.map(function(id){
         return '{"objectId":"' + id + '"}';

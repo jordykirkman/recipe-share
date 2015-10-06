@@ -4,12 +4,9 @@ export default Ember.Route.extend({
 
 	renderTemplate: function() {
 		this.render({
+			into: 'user',
 			outlet: 'recipe',
 		});
-	},
-
-	model: function(){
-		return this.modelFor('user');
 	}
 
 });

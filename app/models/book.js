@@ -9,6 +9,9 @@ export default DS.Model.extend({
 		// inverse: 'books',
 		async: true
 	}),
-	recipes: DS.hasMany('recipe', { async: true })
+	userInvites: DS.hasMany('user', {
+		async: true
+	}),
+	// recipes: DS.hasMany('recipe', { async: true })
   
 });

@@ -5,12 +5,14 @@
 	{{input value=model.name name="name"}}
 
 	<p>{{{textarea value=model.description name="description" placeholder="A long time family recipe that everyone forgets the details of..."}}}</p>
+	<p>{{{textarea value=model.ingredients name="ingredients" placeholder="1 Cup Polyjuice Potion"}}}</p>
+	<p>{{{textarea value=model.instructions name="instructions" placeholder="Stir together gently..."}}}</p>
 
 	<label>Tags</label>
 	{{input value=model.tags name="tags" placeholder="Breakfast, Mexican, gluten free"}}
 
 	<label>Include in books</label>
-	{{#each controllers.user.model.books as |book|}}
+	{{#each userController.books as |book|}}
 		{{checkbox-list model=book contextList=model.books}}
 	{{/each}}
 

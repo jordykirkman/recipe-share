@@ -17,6 +17,7 @@ export default Ember.Route.extend({
 			});
 		}
 	},
+	
 	setupController: function(controller, model){
 		var user = this.modelFor('user');
 		

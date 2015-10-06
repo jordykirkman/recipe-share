@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
-	needs: ['user'],
+	userController: Ember.inject.controller('user'),
 
 	edit: false,
 	options: false,

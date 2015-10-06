@@ -61,6 +61,29 @@ module.exports = function(app) {
 
       })
 
+    } else if(req.query.books){
+
+      var params = encodeURIComponent('where={"books":"' + req.query.books + '"}');
+
+      var options = {
+        url: 'https://api.parse.com/1/classes/Recipe?' + params,
+        method: 'GET',
+        headers: req.headers,
+      }
+
+      request(options, function (error, response, body) {
+        var formattedResponse = {};
+        formattedResponse['recipes'] = [];
+
+          JSON.parse(body).results.forEach(function(item){
+            item.id = item.objectId;
+            formattedResponse['recipes'].push(item);
+          });
+
+          res.send(JSON.stringify(formattedResponse));
+
+      })
+
     } else {
 
       // otherwise get them all

@@ -14,7 +14,7 @@
 	<div class="padd">
 		<ul class="standard-list">
 		{{#each foundUsers as |user|}}
-			<li><button {{action "addToBook" this}}>+ {{user.username}}</button></li>
+			<li><button {{action "inviteToBook" user model}}>+ {{user.username}}</button></li>
 		{{/each}}
 		</ul>
 		<ul class="standard-list">
@@ -25,6 +25,18 @@
 		</ul>
 		<button {{action "leaveBook"}}>Leave Book</button>
 
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+		<h3>Share book with facebook friend</h3>
+		{{#if userController.facebookFriends}}
+			{{input value=facebookFriendSearch placeholder="Search friends"}}
+			{{#each filteredFacebookUsers as |friend|}}
+				<button {{action 'inviteToBookFb' friend model}}>{{friend.name}}</button>
+			{{/each}}
+		{{/if}}
+		</div>
 	</div>
 
 </div>
