@@ -1,9 +1,21 @@
-<div class="large-8 columns text-right collapse">
-	{{#link-to 'book.share' this.model classBinding=":button :small :tab"}}share{{/link-to}}
-	{{#link-to 'book.recipe' this.model classBinding=":button :small :tab"}}back{{/link-to}}
-</div>
-<div class="large-8 columns recipe tabbed collapse">
+<div class="large-12 columns recipe tabbed collapse">
+	{{#link-to 'book.recipe' this.model classBinding=":button :small :options"}}back{{/link-to}}
 	<h3>{{model.name}}</h3>
+
+	{{#if isRecipeCreator}}
+
+		<p>{{{textarea value=model.description name="description" placeholder="A long time family recipe that everyone forgets the details of..."}}}</p>
+		<p>{{{textarea value=model.ingredients name="ingredients" placeholder="1 Cup Polyjuice Potion"}}}</p>
+		<p>{{{textarea value=model.instructions name="instructions" placeholder="Stir together gently..."}}}</p>
+
+		<label>Tags</label>
+		{{input value=model.tags name="tags" placeholder="Breakfast, Mexican, gluten free"}}
+
+	{{/if}}
+
+	{{#if model.hasDirtyAttributes}}
+		<button {{action "saveRecipe"}}>Save</button>
+	{{/if}}
 
 	<label>Include in books</label>
 	{{#each userController.books as |book|}}

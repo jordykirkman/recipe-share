@@ -3,9 +3,10 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 
 	bookController: Ember.inject.controller('book'),
+	showMenu: false,
 
 	hasBook: function(){
-		return this.get('bookController.book.model') ? true : false;
+		return this.get('bookController.book.model') ? '' : 'hide';
 	}.property('bookController.book.model'),
 
 	books: function(){
@@ -15,7 +16,15 @@ export default Ember.Controller.extend({
 		});
 	}.property('model'),
 
+	showMenuClass: function(){
+		return this.get('showMenu') === true ? '' : 'hideMenu';
+	}.property('showMenu'),
+
 	actions: {
+
+		menu: function(){
+			this.toggleProperty('showMenu');
+		},
 
 		fetchBookInvites: function(user){
 			var userId = user.get('id');

@@ -1,15 +1,22 @@
-<div class="large-8 columns text-right collapse">
-	{{#link-to 'book.share' this.model classBinding=":button :small :tab"}}share{{/link-to}}
-	{{#link-to 'book.options' this.model classBinding=":button :small :tab"}}options{{/link-to}}
-</div>
-<div class="large-8 columns recipe tabbed collapse">
-<button {{action "changeQuantity" 'double'}}>double</button>
-<button {{action "changeQuantity" 'single'}}>single</button>
-<button {{action "changeQuantity" 'half'}}>half</button>
+<div class="large-12 columns recipe collapse">
+
+	{{#link-to 'book.options' this.model classBinding=":button :small :options"}}options{{/link-to}}
 	<h3>{{model.name}}</h3>
+	<button class="button tiny" {{action "changeQuantity" 'double'}}>double</button>
+	<button class="button tiny" {{action "changeQuantity" 'single'}}>single</button>
+	<button class="button tiny" {{action "changeQuantity" 'half'}}>half</button>
+	
 
 	<p>{{model.description}}</p>
-	<p>{{{recipe-formatting formattedIngredients}}}</p>
+	<ul class="ingredients">
+	{{#each formattedIngredients as |ingredient|}}
+		<li>
+		{{#ingredient-component}}
+			{{ingredient}}
+		{{/ingredient-component}}
+		</li>
+	{{/each}}
+	</ul>
 	<p>{{model.instructions}}</p>
 
 	<span class="label">{{model.tags}}</span>

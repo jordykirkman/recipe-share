@@ -15,6 +15,10 @@ export default Ember.Controller.extend({
 
 	actions: {
 
+		save: function(model){
+			model.save();
+		},
+
 		respondToBookInvite: function(book, user, res){
 			if(res === true){
 				book.get('users').addObject(user);

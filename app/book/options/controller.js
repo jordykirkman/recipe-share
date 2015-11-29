@@ -6,6 +6,11 @@ export default Ember.Controller.extend({
 
 	edit: false,
 	options: false,
+
+	isRecipeCreator: function(){
+		return this.get('userController.model.id') === this.get('model.creator.id') ? true : false;
+	}.property('userController.model', 'model.creator.isFulfilled'),
+	
 	actions: {
 		optionsToggle: function(){
 			this.toggleProperty('options');

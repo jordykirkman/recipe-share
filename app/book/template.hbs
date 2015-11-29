@@ -2,7 +2,7 @@
 	<li class="padd">{{input value=recipeFilter placeholder="filter by keyword"}}</li>
 	{{#each filteredRecipes as |recipe|}}
 		{{#unless recipe.deleted}}
-	  <li>{{#link-to "book.recipe" recipe}}{{recipe.name}}{{/link-to}}</li>
+	  <li {{action 'menu'}}>{{#link-to "book.recipe" recipe}}{{recipe.name}}{{/link-to}}</li>
 		{{/unless}}
 	{{/each}}
 </ul>

@@ -29,67 +29,73 @@ export default Ember.Controller.extend({
 		'half': 0.5
 	},
 
+	recipeMultiplier: 'single',
+
+	formattedIngredients: function(){
+
+		var number 			= this.get('recipeMultiplier'),
+			controller 		= this,
+			unitLibrary 	= this.get('units'),
+			literalNumber 	= this.get('verbs')[number],
+			ingredients 	= this.get('model.ingredients').split('\n');
+
+		// uses the a recursive molulo function to find the greatest common divisor
+		var convertToFraction = function(decimal){
+
+			// find the greatest common divisor
+			var gcd = function(num, den) {
+				// run this recursively until we cant anymore
+				if (den < 0.0000001) return num;
+				return gcd(den, Math.floor(num % den));
+			};
+
+			// ex: 0.5 === 1
+			var len = decimal.toString().length - 2;
+			// ex: 10 to the 1 power
+			var denominator = Math.pow(10, len);
+			// ex: 0.5 * 10 === 5
+			var numerator = decimal * denominator;
+			// 5 % 10 === 2 how many times does 5 go into ten?
+			var divisor = gcd(numerator, denominator);
+			// 5 / 2 === 2.5
+			numerator /= divisor;
+			// 10 / 2 === 5
+			denominator /= divisor;
+
+			return Math.floor(numerator) + '/' + Math.floor(denominator);
+		}
+
+		var newIngredients = ingredients.map(function(ingredient){
+			var sentance = ingredient.split(' ');
+			var quantity = sentance[0];
+			var unit = sentance[1].toLowerCase();
+
+			// console.log(quantity, unit, unitLibrary[unit]);
+
+			if(unitLibrary[unit]){
+				var newNum = number === 'single' ? 1 : unitLibrary[unit][number];
+
+				if(isNaN(newNum)){
+					sentance[1] = newNum;
+				} else {
+					sentance[0] = newNum * quantity < 1 ? convertToFraction(newNum * quantity) : newNum * quantity;
+				}
+			} else {
+				sentance[0] = literalNumber * quantity < 1 ? convertToFraction(literalNumber * quantity) : literalNumber * quantity;
+			}
+
+			return sentance.join(' ');
+
+		});
+
+		return newIngredients;
+		
+	}.property('recipeMultiplier'),
+
 	actions: {
 
 		changeQuantity: function(number){
-			var controller = this;
-			var unitLibrary = this.get('units');
-			var literalNumber = this.get('verbs')[number];
-
-			var ingredients = this.get('model.ingredients').split('\n');
-
-			// uses the a recursive molulo function to find the greatest common divisor
-			var convertToFraction = function(decimal){
-
-				// find the greatest common divisor
-				var gcd = function(num, den) {
-					// run this recursively until we cant anymore
-					if (den < 0.0000001) return num;
-					return gcd(den, Math.floor(num % den));
-				};
-
-				// ex: 0.5 === 1
-				var len = decimal.toString().length - 2;
-				// ex: 10 to the 1 power
-				var denominator = Math.pow(10, len);
-				// ex: 0.5 * 10 === 5
-				var numerator = decimal * denominator;
-				// 5 % 10 === 2 how many times does 5 go into ten?
-				var divisor = gcd(numerator, denominator);
-				// 5 / 2 === 2.5
-				numerator /= divisor;
-				// 10 / 2 === 5
-				denominator /= divisor;
-
-				return Math.floor(numerator) + '/' + Math.floor(denominator);
-			}
-
-			var newIngredients = ingredients.map(function(ingredient){
-				var sentance = ingredient.split(' ');
-				var quantity = sentance[0];
-				var unit = sentance[1].toLowerCase();
-
-				// console.log(quantity, unit, unitLibrary[unit]);
-
-				if(unitLibrary[unit]){
-					var newNum = number === 'single' ? 1 : unitLibrary[unit][number];
-
-					if(isNaN(newNum)){
-						sentance[1] = newNum;
-					} else {
-						sentance[0] = newNum * quantity < 1 ? convertToFraction(newNum * quantity) : newNum * quantity;
-					}
-				} else {
-					sentance[0] = literalNumber * quantity < 1 ? convertToFraction(literalNumber * quantity) : literalNumber * quantity;
-				}
-
-				return sentance.join(' ');
-
-			});
-			// console.log(newIngredients);
-
-			this.set('formattedIngredients', newIngredients.join('\n'));
-			
+			this.set('recipeMultiplier', number);
 		},
 
 		optionsToggle: function(){

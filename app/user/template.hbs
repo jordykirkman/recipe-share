@@ -1,15 +1,19 @@
-<div class="row">
-	<div class="topbar">
-		Hi {{model.username}}, what should we cook?
-		<button class="button small" {{action "logout"}}>Log Out</button>
+<div class="top-bar fixed">
+	<div class="row">
+		<div class="large 12">
+			<button {{action 'menu'}}>|||</button>
+			Hi {{model.username}}, what should we cook?
+			<button class="button small" {{action "logout"}}>Log Out</button>
+		</div>
 	</div>
 </div>
-<div class="row collapse main-container">
-	<div class="large-4 columns sidebar">
+
+<div class="container row">
+	<div class="large-4 columns sidebar {{showMenuClass}}">
 		<ul class="side-nav">
-			<li>{{#link-to "user.index"}}Your Settings{{/link-to}}</li>
-			<li>{{#link-to "user.newbook"}}New Book{{/link-to}}</li>
-			<li>{{#link-to "user.newrecipe"}}New Recipe{{/link-to}}</li>
+			<li {{action 'menu'}}>{{#link-to "user.index"}}Your Settings{{/link-to}}</li>
+			<li {{action 'menu'}}>{{#link-to "user.newbook"}}New Book{{/link-to}}</li>
+			<li {{action 'menu'}}>{{#link-to "user.newrecipe"}}New Recipe{{/link-to}}</li>
 			
 			{{#if bookController.book.model}}
 				<li class="title"><h3>{{bookController.book.model.name}}:</h3></li>
@@ -26,7 +30,10 @@
 		</ul>
 		{{outlet 'book'}}
 	</div>
-	
-	{{outlet 'recipe'}}
-	
+
+	<div class="row collapse main-container">
+		
+		{{outlet 'recipe'}}
+		
+	</div>
 </div>

@@ -12,7 +12,20 @@ body {
   background-size: cover;
 }
 
+.container {
+  position: absolute;
+  height: 98%;
+  width: 98%;
+  margin: 0 1%;
+  overflow-y: scroll;
+  top: 0;
+  background-color: $gray-lighter;
+  background-image: url('images/recipe-share-footer.png');
+  background-position: right bottom;
+  background-repeat: no-repeat;
+}
 .main-container {
+  padding-top: 50px;
   position: relative;
 }
 
@@ -22,17 +35,27 @@ body {
     padding-right: 0.9375rem;
 }
 
+ul.ingredients {
+  margin: 1em 0;
+  li {
+    padding-left: 0.5em;
+  }
+  li:nth-child(odd){
+    background-color: lighten($gray-lighter, 5%);
+  }
+}
+
+.topbar {
+
+}
+
 .recipe {
-  background-color: $gray-lighter;
-  padding-bottom: 120px;
-  background-image: url('images/recipe-share-footer.png');
-  position: absolute;
-  height: 100%;
-  right: 0;
-  background-position: right bottom;
-  background-repeat: no-repeat;
-  &.tabbed {
-    top: 45px;
+  .button.options {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: lighten($gray-lighter, 10%);
+    color: darken($gray-lighter, 20%);
   }
 }
 
@@ -41,8 +64,28 @@ body {
   100% { opacity: 1; }
 }
 
+@keyframes slide-in-left {
+  0%   { left: -101%; }
+  100% { left: -1%; }
+}
+
+@keyframes slide-out-left {
+  0%   { left: -1%; }
+  100% { left: -101%; }
+}
+
 .sidebar {
   padding-top: 45px;
+  position: absolute;
+  z-index: 1;
+  background-color: $gray-lighter;
+  animation-iteration-count: 1;
+  height: 100%;
+  animation: slide-in-left 0.5s ease;
+  &.hideMenu {
+    animation: slide-out-left 0.5s ease;
+    left: -101%;
+  }
   ul.side-nav {
     padding: 0;
     -webkit-transition: all 1s ease-in;

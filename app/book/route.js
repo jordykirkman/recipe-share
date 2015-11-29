@@ -15,6 +15,10 @@ export default Ember.Route.extend({
 
 	deactivate: function(){
 		this.controllerFor('book').set('model', null);
-	}
+	},
+
+	blah: function(){
+		console.log('hi');
+	}.on('didTransition') 
 
 });

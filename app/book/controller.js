@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
+	userController: Ember.inject.controller('user'),
+
 	recipeFilter: null,
 
 	recipes: function(){
@@ -23,6 +25,12 @@ export default Ember.Controller.extend({
 		} else {
 			return this.get('recipes');
 		}
-	}.property('recipes')
+	}.property('recipes', 'recipeFilter'),
+
+	actions: {
+		menu: function(){
+			this.get('userController').send('menu');
+		},
+	}
 	
 });

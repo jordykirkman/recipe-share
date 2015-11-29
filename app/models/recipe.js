@@ -9,6 +9,7 @@ export default DS.Model.extend({
 	tags: DS.attr('string'),
 	image: DS.attr('string'),
 	deleted: DS.attr('boolean'),
+	creator: DS.belongsTo('user', {async: true}),
 	books: DS.hasMany('book', {
 		// inverse: 'recipes',
 		async: true
