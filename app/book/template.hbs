@@ -1,5 +1,15 @@
 <ul class="side-nav">
-	<li class="padd">{{input value=recipeFilter placeholder="filter by keyword"}}</li>
+	<li class="separator"><h3>{{svg-icon type="spoonKnife" size="small"}}Recipes</h3></li>
+	<li class="collapse row">
+
+			<div class="columns large-2 small-2">
+				<span class="prefix">{{svg-icon type="filter" size="small"}}</span>
+			</div>
+			<div class="columns large-10 small-10">
+				{{input value=recipeFilter placeholder="filter by keyword"}}
+			</div>
+
+	</li>
 	{{#each filteredRecipes as |recipe|}}
 		{{#unless recipe.deleted}}
 	  <li {{action 'menu'}}>{{#link-to "book.recipe" recipe}}{{recipe.name}}{{/link-to}}</li>

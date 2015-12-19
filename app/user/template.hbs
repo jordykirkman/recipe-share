@@ -1,35 +1,36 @@
-<div class="top-bar fixed">
-	<div class="row">
-		<div class="large 12">
-			<button {{action 'menu'}}>|||</button>
-			Hi {{model.username}}, what should we cook?
-			<button class="button small" {{action "logout"}}>Log Out</button>
-		</div>
+<div class="top-menu fixed">
+	<div class="top-bar-section">
+		<ul>
+			<li>
+				<a {{action 'menu'}}>{{svg-icon type="books"}}</a>
+			</li>
+			<li>
+				<span class="name">Hi {{model.username}}!</span>
+			</li>
+			<li>
+				<a {{action "logout"}}>Log Out</a>
+			</li>
+		</ul>
 	</div>
 </div>
 
-<div class="container row">
-	<div class="large-4 columns sidebar {{showMenuClass}}">
-		<ul class="side-nav">
-			<li {{action 'menu'}}>{{#link-to "user.index"}}Your Settings{{/link-to}}</li>
-			<li {{action 'menu'}}>{{#link-to "user.newbook"}}New Book{{/link-to}}</li>
-			<li {{action 'menu'}}>{{#link-to "user.newrecipe"}}New Recipe{{/link-to}}</li>
-			
-			{{#if bookController.book.model}}
-				<li class="title"><h3>{{bookController.book.model.name}}:</h3></li>
-			{{else}}
-				<li class="separator"><h3>Books</h3></li>
-			{{/if}}
-			
-		</ul>
-		<ul class="side-nav {{bookController.book.model:shrink}}">	
-			{{#each books as |book|}}
-				<li>{{#link-to "book" book}}{{book.name}}{{/link-to}}</li>
-			{{/each}}
-
-		</ul>
+<div class="sidebar {{showMenuClass}}">
+	<ul class="side-nav">
+		<li {{action 'menu'}}>{{#link-to "user.index"}}Your Settings{{/link-to}}</li>
+		<li {{action 'menu'}}>{{#link-to "user.newbook"}}New Book{{/link-to}}</li>
+		<li {{action 'menu'}}>{{#link-to "user.newrecipe"}}New Recipe{{/link-to}}</li>
+		
+		<li class="separator"><h3>{{svg-icon type="books" size="small"}}Books</h3></li>
+		
+		{{#each books as |book|}}
+			<li>{{#link-to "book" book}}{{book.name}}{{/link-to}}</li>
+		{{/each}}
 		{{outlet 'book'}}
-	</div>
+	</ul>
+	
+</div>
+
+<div class="container row">
 
 	<div class="row collapse main-container">
 		
