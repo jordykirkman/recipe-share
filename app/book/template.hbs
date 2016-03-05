@@ -1,5 +1,5 @@
 <ul class="side-nav">
-	<li class="separator"><h3>{{svg-icon type="spoonKnife" size="small"}}Recipes</h3></li>
+	<li class="separator"><h4>{{svg-icon type="spoonKnife" size="small"}}Recipes</h4></li>
 	<li class="collapse row">
 
 			<div class="columns large-2 small-2">
@@ -14,6 +14,8 @@
 		{{#unless recipe.deleted}}
 	  <li {{action 'menu'}}>{{#link-to "book.recipe" recipe}}{{recipe.name}}{{/link-to}}</li>
 		{{/unless}}
+	{{else}}
+		<li>No recipes yet.</li>
 	{{/each}}
 </ul>
 

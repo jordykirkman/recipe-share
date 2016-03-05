@@ -12,20 +12,35 @@ body {
   background-size: cover;
 }
 
+textarea {
+  min-height: 150px;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.button.active {
+  background-color: lighten($primary-color, 20%);
+}
+
+.ember-application > .ember-view {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1000px;
+  margin: auto;
+}
+
 .container {
-  position: absolute;
   height: 98%;
   width: 98%;
-  margin: 0 1%;
-  overflow-y: scroll;
-  top: 0;
-  background-color: $gray-lighter;
-  background-image: url('images/recipe-share-footer.png');
-  background-position: right bottom;
-  background-repeat: no-repeat;
+  padding-top: 70px;
+  position: relative;
+  padding-bottom: 30px;
+  overflow: scroll;
 }
 .main-container {
-  padding-top: 50px;
   position: relative;
 }
 
@@ -41,12 +56,31 @@ ul.ingredients {
     padding-left: 0.5em;
   }
   li:nth-child(odd){
-    background-color: lighten($gray-lighter, 5%);
+    
   }
 }
 
-.topbar {
-
+.top-menu {
+  background-color: $gray-darker;
+  height: 45px;
+  ul {
+    li {
+      float: left;
+      line-height: 45px;
+      color: $white;
+      a, span {
+        padding: 0 0.9375rem;
+      }
+      .icon {
+        fill: #fff;
+      }
+    }
+    @media (min-width: 640px){
+      li.nav-slideout-button {
+        display: none;
+      }
+    }
+  }
 }
 
 .recipe {
@@ -75,16 +109,23 @@ ul.ingredients {
 }
 
 .sidebar {
-  padding-top: 45px;
-  position: absolute;
+  position: fixed;
+  overflow-y: scroll;
   z-index: 1;
+  width: 33%;
+  min-width: 200px;
+  max-width: 340px;
+  padding-top: 50px;
   background-color: $gray-lighter;
   animation-iteration-count: 1;
   height: 100%;
   animation: slide-in-left 0.5s ease;
-  &.hideMenu {
-    animation: slide-out-left 0.5s ease;
-    left: -101%;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  @media (max-width: 640px){
+    &.hideMenu {
+      animation: slide-out-left 0.5s ease;
+      left: -101%;
+    }
   }
   ul.side-nav {
     padding: 0;
@@ -117,11 +158,25 @@ ul.ingredients {
           background-color: transparent;
         }
         &.active:hover, &.active, &:focus, &:active {
-          background-color: $gray-lighter;
+          background-color: $white;
         }
+      }
+      &.separator {
+        padding-left: 0.875rem;
+      }
+      .icon {
+        fill: $black;
       }
     }
   }
+}
+
+.icon {
+  float: left;
+}
+
+.prefix .icon {
+  float: none;
 }
 
 .tab {

@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import layout from './template';
 
 export default Ember.Component.extend({
 
@@ -18,8 +17,6 @@ export default Ember.Component.extend({
 				this.get('contextList').removeObject(this.get('model'));
 			}
 		}
-	},
-
-	layout: layout
+	}
 
 });

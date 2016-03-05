@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
+	classNames: ['sdflsdf'],
+
 	bookController: Ember.inject.controller('book'),
 	showMenu: false,
 
@@ -40,7 +42,7 @@ export default Ember.Controller.extend({
 		},
 		save: function(){
 			this.get('model').save().then(function(user){
-				alert('Changes saved.')
+				alert('Changes saved.');
 			});
 		}
 	}

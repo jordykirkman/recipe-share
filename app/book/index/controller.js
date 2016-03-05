@@ -38,7 +38,7 @@ export default Ember.Controller.extend({
 			});
 		},
 		inviteToBook: function(user, book){
-			book.get('userInvites').pushObject(ourUser);
+			book.get('userInvites').pushObject(user);
 			book.save().then(function(){
 				alert('Shared with ' + user.get('username'));
 			});

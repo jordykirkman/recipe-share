@@ -12,10 +12,6 @@ export default Ember.Component.extend({
 
 	click: function(){
 		this.toggleProperty('crossedOut');
-	},
-
-	touchStart: function(){
-		this.toggleProperty('crossedOut');
 	}
 
 });

@@ -136,7 +136,27 @@ module.exports = function(app) {
   });
 
   bookRouter.post('/', function(req, res) {
-    res.status(201).end();
+    var data = req.body.book;
+
+    var options = {
+      url: 'https://api.parse.com/1/classes/Book/',
+      headers: req.headers,
+      body: JSON.stringify(data),
+      method: 'POST'
+    }
+
+    request(options, function (error, response, body) {
+      if(JSON.parse(body).error){
+        res.send(body);
+      } else {
+        // parse Baas doesnt return a whole object, so if there is no error
+        // we need to just add the id to the original object and return it
+          var finalResponse = {};
+          finalResponse['book'] = data;
+          finalResponse['book']['id'] = JSON.parse(body).objectId;
+          res.send(JSON.stringify(finalResponse));
+        }
+    });
   });
 
   bookRouter.get('/:id', function(req, res) {

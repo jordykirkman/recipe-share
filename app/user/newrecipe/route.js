@@ -12,8 +12,10 @@ export default Ember.Route.extend({
 		if(this.get('controller.model') && this.get('controller.model.isNew') === true){
 			return this.get('controller.model');
 		} else {
+			var user = this.modelFor('user');
 			return this.store.createRecord('recipe', {
-				name: "Your new recipe"
+				name: "Your new recipe",
+				creator: user
 			});
 		}
 	},

@@ -15,8 +15,8 @@ export default Ember.Controller.extend({
 
 	actions: {
 
-		save: function(model){
-			model.save();
+		save: function(){
+			this.get('model').save();
 		},
 
 		respondToBookInvite: function(book, user, res){

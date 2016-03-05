@@ -34,7 +34,7 @@ module.exports = function(app) {
   userRouter.get('/', function(req, res) {
 
     // if a list of ids is in the query string, fetch them all
-    if(req.query.ids || req.query.username || req.query.facebookUser){
+    if(req.query.ids || req.query.username || req.query.email || req.query.facebookUser){
 
       if(req.query.ids){
 
@@ -48,6 +48,12 @@ module.exports = function(app) {
 
         var objects = [];
         objects.push('{"username":"' + req.query.username + '"}');
+        var params = encodeURIComponent('where={"$or":[' + objects.toString() + ']}');
+
+      } else if(req.query.email){
+
+        var objects = [];
+        objects.push('{"email":"' + req.query.email + '"}');
         var params = encodeURIComponent('where={"$or":[' + objects.toString() + ']}');
 
       } else if(req.query.facebookUser){

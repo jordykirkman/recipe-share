@@ -1,25 +1,20 @@
-<div class="large-12 columns recipe tabbed collapse">
-	{{#link-to 'book.recipe' this.model classBinding=":button :small :options"}}back{{/link-to}}
-	<h3>{{model.name}}</h3>
+{{#link-to 'book.recipe' this.model classBinding=":button :small :options"}}back{{/link-to}}
+<h3>{{model.name}}</h3>
 
-	{{#if isRecipeCreator}}
+{{#if isRecipeCreator}}
 
-		<p>{{{textarea value=model.description name="description" placeholder="A long time family recipe that everyone forgets the details of..."}}}</p>
-		<p>{{{textarea value=model.ingredients name="ingredients" placeholder="1 Cup Polyjuice Potion"}}}</p>
-		<p>{{{textarea value=model.instructions name="instructions" placeholder="Stir together gently..."}}}</p>
+	<p>{{{textarea value=model.description name="description" placeholder="A long time family recipe that everyone forgets the details of..."}}}</p>
+	<p>{{{textarea value=model.ingredients name="ingredients" placeholder="1 Cup Polyjuice Potion"}}}</p>
+	<p>{{{textarea value=model.instructions name="instructions" placeholder="Stir together gently..."}}}</p>
 
-		<label>Tags</label>
-		{{input value=model.tags name="tags" placeholder="Breakfast, Mexican, gluten free"}}
+	<label>Tags</label>
+	{{input value=model.tags name="tags" placeholder="Breakfast, Mexican, gluten free"}}
 
-	{{/if}}
+{{/if}}
 
-	{{#if model.hasDirtyAttributes}}
-		<button {{action "saveRecipe"}}>Save</button>
-	{{/if}}
+<label>Include in books {{model.books.length}}</label>
+{{#each userController.books as |book|}}
+	{{checkbox-list model=book contextList=model.books}}
+{{/each}}
 
-	<label>Include in books</label>
-	{{#each userController.books as |book|}}
-		{{checkbox-list model=book contextList=model.books}}
-	{{/each}}
-
-</div>
+<button class="button small" {{action "save"}}>Save</button>

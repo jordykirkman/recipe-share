@@ -10,8 +10,6 @@ export default Ember.Controller.extend({
 
 			// save the book
 			model.save().then(function(book){
-				
-				user.get('books').addObject(book);
 
 				self.transitionToRoute('book', book);
 

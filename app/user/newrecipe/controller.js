@@ -17,9 +17,8 @@ export default Ember.Controller.extend({
 			var ingredients = JSON.stringify(this.get('ingredients'));
 
 			model.save().then(function(recipe){
-				recipe.get('books').reload();
 				var book = recipe.get('books.firstObject');
-				self.transitionToRoute('recipe', book, recipe);
+				self.transitionToRoute('book.recipe', book, recipe);
 			});
 				
 		}

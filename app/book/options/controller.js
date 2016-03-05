@@ -16,14 +16,6 @@ export default Ember.Controller.extend({
 			this.toggleProperty('options');
 		},
 
-		removeFromBook: function(){
-			// book.get('recipes').then(function(recipes){
-			// 	book.removeObject('recipe').save().then(function(book){
-			// 		alert('Recipe removed from book' + book);
-			// 	});
-			// });
-		},
-
 		save: function(recipe){
 			this.get('model').save().then(function(recipe){
 				alert('Recipe updated.');

@@ -1,8 +1,8 @@
 <div class="top-menu fixed">
 	<div class="top-bar-section">
 		<ul>
-			<li>
-				<a {{action 'menu'}}>{{svg-icon type="books"}}</a>
+			<li class="nav-slideout-button">
+				<a {{action 'menu'}}>{{svg-icon class="icon" type="books"}}</a>
 			</li>
 			<li>
 				<span class="name">Hi {{model.username}}!</span>
@@ -20,21 +20,21 @@
 		<li {{action 'menu'}}>{{#link-to "user.newbook"}}New Book{{/link-to}}</li>
 		<li {{action 'menu'}}>{{#link-to "user.newrecipe"}}New Recipe{{/link-to}}</li>
 		
-		<li class="separator"><h3>{{svg-icon type="books" size="small"}}Books</h3></li>
+		<li class="separator"><h4>{{svg-icon type="books" size="small"}}Books</h4></li>
 		
 		{{#each books as |book|}}
 			<li>{{#link-to "book" book}}{{book.name}}{{/link-to}}</li>
 		{{/each}}
-		{{outlet 'book'}}
+		
 	</ul>
+	{{outlet 'book'}}
 	
 </div>
 
 <div class="container row">
-
-	<div class="row collapse main-container">
-		
-		{{outlet 'recipe'}}
-		
-	</div>
+		<div class="large-4 medium-4 columns collapse">
+		</div>
+		<div class="large-8 medium-8 small-12 columns recipe collapse">
+			{{outlet 'recipe'}}
+		</div>
 </div>

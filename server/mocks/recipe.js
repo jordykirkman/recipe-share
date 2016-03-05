@@ -155,18 +155,15 @@ module.exports = function(app) {
     var options = {
       url: 'https://api.parse.com/1/classes/Recipe/' + id,
       headers: req.headers,
-      body: data,
+      body: JSON.stringify(data),
       method: 'put'
     }
 
-    request(
-      options,
-        function (error, response, body) {
-          var finalResponse = JSON.parse(body);
-          finalResponse.id = finalResponse.objectId;
-          res.send(JSON.stringify(finalResponse));
-        }
-    );
+    request(options, function (error, response, body) {
+      var finalResponse = JSON.parse(body);
+      finalResponse.id = finalResponse.objectId;
+      res.send(JSON.stringify(finalResponse));
+    });
   });
 
   app.use('/api/recipes', recipeRouter);

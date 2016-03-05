@@ -6,7 +6,10 @@ export default Ember.Controller.extend({
 
 	edit: false,
 	options: false,
+	recipeMultiplier: 'single',
 
+	// this is our library of units
+	// TODO: add other units
 	units: {
 		gallon: {'double': 2, 'half': 0.5},
 		gallons: {'double': 2, 'half': 0.5},
@@ -29,12 +32,15 @@ export default Ember.Controller.extend({
 		'half': 0.5
 	},
 
-	recipeMultiplier: 'single',
+	// recipe multiplier property is set by clicking a button,
+	// this ensures it changes when a new recipe is selected
+	resetRecipeMultiplier: function(){
+		this.set('recipeMultiplier', 'single');
+	}.observes('model'),
 
 	formattedIngredients: function(){
 
 		var number 			= this.get('recipeMultiplier'),
-			controller 		= this,
 			unitLibrary 	= this.get('units'),
 			literalNumber 	= this.get('verbs')[number],
 			ingredients 	= this.get('model.ingredients').split('\n');
@@ -45,7 +51,7 @@ export default Ember.Controller.extend({
 			// find the greatest common divisor
 			var gcd = function(num, den) {
 				// run this recursively until we cant anymore
-				if (den < 0.0000001) return num;
+				if (den < 0.0000001){ return num; }
 				return gcd(den, Math.floor(num % den));
 			};
 
@@ -63,16 +69,25 @@ export default Ember.Controller.extend({
 			denominator /= divisor;
 
 			return Math.floor(numerator) + '/' + Math.floor(denominator);
-		}
+		};
+
+		var convertToDecimal = function(fraction){
+			var parts = fraction.split('/');
+			if(parts[1]){
+				return parts[0] / parts[1];
+			} else {
+				return parts[0];
+			}
+		};
 
 		var newIngredients = ingredients.map(function(ingredient){
-			var sentance = ingredient.split(' ');
-			var quantity = sentance[0];
+			var sentance = ingredient.replace(/^\s+|\s+$/g, "").split(' ');
+			var quantity = sentance[0].indexOf('/') >= 1 ? convertToDecimal(sentance[0]) : sentance[0];
 			var unit = sentance[1].toLowerCase();
 
 			// console.log(quantity, unit, unitLibrary[unit]);
 
-			if(unitLibrary[unit]){
+			if(unitLibrary[unit] && !isNaN(quantity)){
 				var newNum = number === 'single' ? 1 : unitLibrary[unit][number];
 
 				if(isNaN(newNum)){
@@ -80,7 +95,7 @@ export default Ember.Controller.extend({
 				} else {
 					sentance[0] = newNum * quantity < 1 ? convertToFraction(newNum * quantity) : newNum * quantity;
 				}
-			} else {
+			} else if(!isNaN(quantity)) {
 				sentance[0] = literalNumber * quantity < 1 ? convertToFraction(literalNumber * quantity) : literalNumber * quantity;
 			}
 
@@ -90,7 +105,7 @@ export default Ember.Controller.extend({
 
 		return newIngredients;
 		
-	}.property('recipeMultiplier'),
+	}.property('recipeMultiplier', 'model.ingredients'),
 
 	actions: {
 
@@ -110,8 +125,8 @@ export default Ember.Controller.extend({
 			// });
 		},
 
-		save: function(recipe){
-			this.get('model').save().then(function(recipe){
+		save: function(/*recipe*/){
+			this.get('model').save().then(function(/*recipe*/){
 				alert('Recipe updated.');
 			});
 		},
@@ -119,7 +134,7 @@ export default Ember.Controller.extend({
 		copyToBook: function(book){
 			var recipe = this.get('model');
 			book.get('recipes').pushObject(recipe);
-			book.save().then(function(book){
+			book.save().then(function(/*book*/){
 				console.log('saved');
 			});
 		}

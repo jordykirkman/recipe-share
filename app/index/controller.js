@@ -13,8 +13,20 @@ export default Ember.Controller.extend({
 
 	actions: {
 
-		toggleSignup: function(){
-			this.toggleProperty('signup');
+		checkUser: function(){
+			var e = this.get('email');
+			var self = this;
+			Ember.$.getJSON('api/users?email=' + e).then(function(data) {
+
+				// login was successful, create a session
+				if(data){
+					self.set('signup', false);
+			    	self.set('login', true);
+				} else {
+					self.set('signup', true);
+					self.set('login', false);
+				}
+			});
 		},
 
 		facebookLogin: function(){
@@ -51,11 +63,10 @@ export default Ember.Controller.extend({
 		},
 
 		signup: function(){
-			var u = this.get('username');
 			var p = this.get('password');
 			var e = this.get('email');
 			var self = this;
-			var newUser = this.store.createRecord('user', {username: u, password: p, email: e});
+			var newUser = this.store.createRecord('user', {username: e, password: p, email: e});
 			newUser.save().then(function(user){
 				self.set('model', user);
 				if(user.get('error')){
@@ -67,10 +78,10 @@ export default Ember.Controller.extend({
 		},
 
 		login: function(){
-			var u = this.get('username');
+			var e = this.get('email');
 			var p = this.get('password');
 			var self = this;
-			Ember.$.getJSON('api/login?username=' + u + '&password=' + p).then(function(data) {
+			Ember.$.getJSON('api/login?username=' + e + '&password=' + p).then(function(data) {
 
 				// login was successful, create a session
 				if(data){

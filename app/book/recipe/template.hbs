@@ -1,24 +1,19 @@
-<div class="large-12 columns recipe collapse">
+{{#link-to 'book.options' this.model classBinding=":button :small :options"}}options{{/link-to}}
+<h4>{{model.name}}</h4>
+{{#checkbox-single class="button tiny" value="double" target=recipeMultiplier}}double{{/checkbox-single}}
+{{#checkbox-single class="button tiny" value="single" target=recipeMultiplier}}single{{/checkbox-single}}
+{{#checkbox-single class="button tiny" value="half" target=recipeMultiplier}}half{{/checkbox-single}}
 
-	{{#link-to 'book.options' this.model classBinding=":button :small :options"}}options{{/link-to}}
-	<h3>{{model.name}}</h3>
-	<button class="button tiny" {{action "changeQuantity" 'double'}}>double</button>
-	<button class="button tiny" {{action "changeQuantity" 'single'}}>single</button>
-	<button class="button tiny" {{action "changeQuantity" 'half'}}>half</button>
-	
+<p>{{model.description}}</p>
+<ul class="ingredients">
+{{#each formattedIngredients as |ingredient|}}
+	<li>
+	{{#ingredient-component}}
+		{{ingredient}}
+	{{/ingredient-component}}
+	</li>
+{{/each}}
+</ul>
+<p>{{model.instructions}}</p>
 
-	<p>{{model.description}}</p>
-	<ul class="ingredients">
-	{{#each formattedIngredients as |ingredient|}}
-		<li>
-		{{#ingredient-component}}
-			{{ingredient}}
-		{{/ingredient-component}}
-		</li>
-	{{/each}}
-	</ul>
-	<p>{{model.instructions}}</p>
-
-	<span class="label">{{model.tags}}</span>
-
-</div>
+<span class="label">{{model.tags}}</span>
